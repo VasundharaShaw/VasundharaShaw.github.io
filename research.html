@@ -1,48 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Research | Vasundhara Shaw</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="description" content="Research interests, tools, and selected publications by Dr Vasundhara (Vasu) Shaw: Galactic magnetic fields, UHECRs, radio polarimetry, and simulations with CRPropa3." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
-    body {
-      background-color: #0b0c10;
-      color: #fff;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 1.05rem;
+    :root{
+      color-scheme: dark;                /* tell browsers we're dark */
+      --brand:#9ab3ff;
+      --bg:#0b0c10;
+      --fg:#ffffff;
+      --muted:#c3c8d1;
+      --card:#151821;
+      --ring:#2a2f3b;
+
+      /* Bootstrap variables so components inherit our palette */
+      --bs-body-bg: var(--bg);
+      --bs-body-color: var(--fg);
+      --bs-heading-color: var(--fg);
+      --bs-link-color: var(--brand);
+      --bs-link-hover-color: #cfe0ff;
+      --bs-border-color: var(--ring);
+      --bs-card-bg: var(--card);
+      --bs-card-color: var(--fg);
+    }
+
+    html,body{ height:100%; }
+    body{
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1.1rem;    /* 17–18px feel */
       line-height: 1.75;
     }
-    .nav-pills .nav-link { color: #9ab3ff; font-weight: 600; }
-    .nav-pills .nav-link.active { background-color: #9ab3ff; color: #0b0c10; }
-    a { color: #9ab3ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .card {
-      background-color: #151821;
+
+    .container-narrow{ max-width: 980px; }
+
+    /* Nav */
+    .nav-pills .nav-link{ color: var(--brand); font-weight: 600; }
+    .nav-pills .nav-link.active{ background-color: var(--brand); color:#0b0c10; }
+
+    /* Cards */
+    .card{
+      background-color: var(--card);
+      border: none;
       border-radius: 1rem;
       padding: 1.5rem;
       box-shadow: 0 10px 25px rgba(0,0,0,.4);
       margin-bottom: 2rem;
     }
-    h1, h2 { color: #fff; font-weight: 600; }
-    .pub-list li { margin-bottom: .6rem; }
-    .project-img {
+
+    /* Headings & lists */
+    h1,h2{ color:#fff; font-weight:700; line-height:1.25; }
+    h1{ font-size: 2rem; }
+    h2{ font-size: 1.5rem; }
+    ul{ margin-bottom: 0; }
+    ul li{ color: var(--fg); }
+    ul li::marker{ color:#7f92ff; } /* subtle colored bullet */
+
+    /* Links */
+    a{ color: var(--brand); text-decoration: none; font-weight: 600; }
+    a:hover{ text-decoration: underline; }
+
+    /* Publications spacing */
+    .pub-list li{ margin-bottom: .6rem; }
+
+    /* Optional images (kept commented in HTML) */
+    .project-img{
       max-width: 100%;
-      border-radius: 0.5rem;
-      margin-top: 0.6rem;
+      border-radius: .5rem;
+      margin-top: .6rem;
       box-shadow: 0 6px 18px rgba(0,0,0,.5);
     }
+
+    /* Divider */
+    hr{ border-color: var(--ring) !important; opacity: 1; }
   </style>
 </head>
 <body>
-<div class="container py-5">
+<div class="container container-narrow py-5">
 
   <!-- Navigation -->
   <nav class="nav nav-pills mb-4">
     <a class="nav-link" href="index.html">Home</a>
     <a class="nav-link" href="about.html">About</a>
-    <a class="nav-link active" href="research.html">Research</a>
+    <a class="nav-link active" href="research.html" aria-current="page">Research</a>
     <a class="nav-link" href="cv.html">CV</a>
     <a class="nav-link" href="talks.html">Talks</a>
   </nav>
@@ -52,10 +97,10 @@
     <h1>Research Interests</h1>
     <ul>
       <li>Galactic magnetic field modeling and template fitting</li>
-      <li>Ultra-high energy cosmic ray (UHECR) diffusion and deflections</li>
-      <li>Analysis of polarised synchrotron maps from C-BASS and S-PASS</li>
+      <li>Ultra‑high energy cosmic ray (UHECR) diffusion and deflections</li>
+      <li>Analysis of polarised synchrotron maps from C‑BASS and S‑PASS</li>
       <li>Numerical simulations with CRPropa3</li>
-      <li>High-performance computing and big data astrophysics</li>
+      <li>High‑performance computing and big‑data astrophysics</li>
     </ul>
   </div>
 
@@ -75,52 +120,16 @@
     <h2>Selected Publications</h2>
     <ul class="pub-list">
       <li>
-        V. Shaw, A. van Vliet, A. Taylor (2022). 
-        <em>Galactic halo bubble magnetic fields and UHECR deflections</em>, 
-        <a href="https://doi.org/10.1093/mnras/stac2778" target="_blank">MNRAS</a>.
+        V. Shaw, A. van Vliet, A. Taylor (2022).
+        <em>Galactic halo bubble magnetic fields and UHECR deflections</em>,
+        <a href="https://doi.org/10.1093/mnras/stac2778" target="_blank" rel="noopener">MNRAS</a>.
       </li>
       <li>
-        V. Shaw, A. van Vliet, A. Taylor (2025). 
-        <em>Influence of the Galactic Halo on the UHECR Multipoles</em>, 
-        <a href="https://arxiv.org/abs/2501.16881" target="_blank">arXiv:2501.16881</a> (submitted).
+        V. Shaw, A. van Vliet, A. Taylor (2025).
+        <em>Influence of the Galactic Halo on the UHECR Multipoles</em>,
+        <a href="https://arxiv.org/abs/2501.16881" target="_blank" rel="noopener">arXiv:2501.16881</a> (submitted).
       </li>
       <li>
-        B. M. Gaensler et al. (incl. V. Shaw) (2025). 
-        <em>The Polarisation Sky Survey of the Universe’s Magnetism (POSSUM): Science Goals and Survey Description</em>, 
-        <a href="https://arxiv.org/abs/2505.08272" target="_blank">arXiv:2505.08272</a>, PASA (accepted).
-      </li>
-      <li>
-        V. Shaw et al. (2022). 
-        <em>Magnetic fields in the Galactic halo bubbles and deflections of UHECRs</em>, 
-        <a href="https://pos.sissa.it/444/480/" target="_blank">ICRC Proceedings</a>.
-      </li>
-      <li>
-        V. Shaw et al. (in prep., 2025). 
-        <em>Template-fitting constraints on GMF models</em>.
-      </li>
-    </ul>
-  </div>
-
-  <!-- Projects & Figures (commented out for now) -->
-  <!--
-  <div class="card">
-    <h2>Projects & Figures</h2>
-    <p>
-      My research combines simulations and observations to study the Galactic magnetic field and its effect on cosmic rays. 
-      Below are some example figures from my published work.
-    </p>
-
-    <h5>UHECR Deflections in Galactic Halo Fields (MNRAS 2022)</h5>
-    <img src="assets/uhcer_deflections.png" alt="Sky map of UHECR deflections in Galactic halo fields" class="project-img">
-
-    <h5>Synchrotron Emission in Halo Bubbles (PhD Thesis)</h5>
-    <img src="assets/halo_synchrotron.png" alt="Synchrotron emission maps of the Galactic halo bubble regions" class="project-img">
-
-    <h5>Template-Fitting GMF Models vs C-BASS/S-PASS (work in progress)</h5>
-    <img src="assets/template_fit.png" alt="Template fitting plots comparing GMF models and 5 GHz synchrotron maps" class="project-img">
-  </div>
-  -->
-
-</div>
-</body>
-</html>
+        B. M. Gaensler et&nbsp;al. (incl. V. Shaw) (2025).
+        <em>The Polarisation Sky Survey of the Universe’s Magnetism (POSSUM): Science Goals and Survey Description</em>,
+        <a href="https://arxiv.org/abs/2505.08272" target="_blank" rel="noopene_
