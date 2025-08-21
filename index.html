@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Postdoctoral researcher at the University of Manchester working on Galactic magnetic fields, cosmic rays, and radio polarimetry." />
   <link rel="canonical" href="https://vasundharashaw.github.io/index.html" />
-  <meta name="color-scheme" content="light dark" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Dr Vasundhara (Vasu) Shaw — Astrophysicist" />
@@ -16,75 +15,82 @@
   <meta property="og:image" content="assets/vasu-card.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Google Font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      --brand:#4a4e69;
-      --bg:#f9f9fb; --fg:#333; --muted:#666; --card:#fff; --ring:#dadde2;
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0b0c10; --fg:#e8edf1; --muted:#a9b4bf; --card:#12141a; --ring:#232633; --brand:#9ab3ff;
-      }
-      img{ filter: none !important; }
+      --brand:#9ab3ff;      /* link/brand color */
+      --bg:#0b0c10;         /* page background */
+      --fg:#ffffff;         /* main text (white) */
+      --muted:#c3c8d1;      /* secondary text */
+      --card:#151821;       /* card background */
+      --ring:#2a2f3b;       /* borders around image */
     }
 
     html,body{ height:100% }
     body{
       font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background:var(--bg); color:var(--fg);
+      font-size:1.125rem;          /* 18px base */
+      line-height:1.75;            /* comfy reading */
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
 
-    .container-narrow{ max-width: 980px; }
+    .container-narrow{ max-width:980px; }
 
     /* Header / nav */
     .brand{ font-weight:700; letter-spacing:.2px; color:var(--fg); text-decoration:none; }
     .nav-pills .nav-link{ color:var(--brand); font-weight:600; }
-    .nav-pills .nav-link.active{ background-color:var(--brand); }
+    .nav-pills .nav-link.active{ background-color:var(--brand); color:#0b0c10; }
 
     /* Card */
     .card{
-      background:var(--card); border:none;
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      border-radius: 1rem;
+      background:var(--card); color:var(--fg);
+      border:none; border-radius:1rem;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
     }
+
+    /* Headings */
+    h1,h2,h3,h4,h5,h6{
+      color:#fff; line-height:1.25; margin-top:1rem; margin-bottom:.5rem;
+    }
+    h1{ font-size:2rem; }     /* ~32px */
+    h2{ font-size:1.5rem; }   /* ~24px */
+
+    /* Paragraphs & small text */
+    p{ margin-bottom:1rem; color:var(--fg); }
+    .small, small{ color:var(--muted); font-size:.95rem; }
+
+    /* Links */
+    a{ color:var(--brand); font-weight:600; text-decoration:none; }
+    a:hover{ opacity:.9; text-decoration:underline; }
 
     /* Profile image */
     .profile-img{
-      width: 150px; aspect-ratio: 1/1; object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--ring);
-      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+      width:170px; aspect-ratio:1/1; object-fit:cover;
+      border-radius:50%; border:4px solid var(--ring);
+      margin-bottom:1rem; box-shadow:0 8px 26px rgba(0,0,0,.5);
     }
 
-    a{ color:var(--brand); }
-    a:hover{ opacity:.9; }
-
-    .kicker{ font-size:.9rem; color:var(--muted) }
-
-    footer{ color:var(--muted) }
-
-    /* Better spacing for long text */
-    .leadish{ font-size:1.05rem; line-height:1.75 }
-
-    /* Skip link for accessibility */
+    /* Accessibility: skip link */
     .skip-link{
       position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;
     }
     .skip-link:focus{
-      position:static; width:auto; height:auto; padding:.5rem .75rem; background:var(--brand); color:#fff; border-radius:.5rem;
+      position:static; width:auto; height:auto; padding:.5rem .75rem;
+      background:var(--brand); color:#0b0c10; border-radius:.5rem;
     }
+
+    footer{ color:var(--muted); }
   </style>
 
-  <!-- Person schema (improves search previews) -->
+  <!-- Schema.org Person -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -120,7 +126,7 @@
     </div>
   </header>
 
-  <!-- Content Card -->
+  <!-- Content -->
   <main id="main" class="card p-4 p-md-5">
     <div class="row g-4 align-items-start">
       <!-- Profile -->
@@ -145,14 +151,14 @@
         </ul>
       </div>
 
-      <!-- About Me -->
+      <!-- About -->
       <div class="col-md-8">
-        <h1 class="h3 fw-semibold">About Me</h1>
-        <p class="leadish">
+        <h1 class="fw-semibold">About Me</h1>
+        <p>
           Hiya! I’m Vasundhara Shaw (I go by <strong>Vasu</strong>), currently a postdoctoral researcher in astrophysics at the University of Manchester.
         </p>
 
-        <p class="leadish">
+        <p>
           My work focuses on cosmic rays, the Galactic magnetic field, and radio astronomy — especially using data from
           <a href="https://cbass.web.ox.ac.uk/" target="_blank" rel="noopener">C‑BASS</a> and
           <a href="https://sites.google.com/inaf.it/spass" target="_blank" rel="noopener">S‑PASS</a>.
@@ -160,20 +166,19 @@
           <a href="https://crpropa.github.io/CRPropa3/pages/Installation.html" target="_blank" rel="noopener">CRPropa3</a>.
         </p>
 
-        <p class="leadish">
+        <p>
           I enjoy working with code, data, and big sky maps; collaborating via projects like POSSUM; and contributing to research papers and open‑source tools.
           I completed my PhD at DESY (Germany), exploring cosmic‑ray transport and the structure of the Galactic halo.
         </p>
 
-        <p class="leadish">
+        <p>
           Outside research, I care about mentoring, equity in science, and occasionally help with outreach and student support initiatives.
           If you’re curious about my work or want to connect, feel free to browse around or get in touch.
         </p>
 
-        <!-- Optional featured links block -->
         <hr class="my-4" />
         <div>
-          <div class="kicker mb-2">Featured</div>
+          <div class="small mb-2">Featured</div>
           <ul class="mb-0">
             <li><a href="talks.html">Talks & slides</a></li>
             <li><a href="cv.html">CV (web)</a> · <a href="assets/Vasundhara_Shaw_CV.pdf">PDF</a></li>
@@ -192,10 +197,10 @@
 </div>
 
 <script>
-  // Footer year + last updated (no external JS needed)
   document.getElementById('y').textContent = new Date().getFullYear();
   const d = new Date(document.lastModified);
-  document.getElementById('lu').textContent = d.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'2-digit'});
+  document.getElementById('lu').textContent =
+    d.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'2-digit'});
 </script>
 </body>
 </html>
