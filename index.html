@@ -1,117 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dr Vasundhara (Vasu) Shaw | Astrophysicist</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>Dr Vasundhara (Vasu) Shaw | Astrophysicist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Postdoctoral researcher at the University of Manchester working on Galactic magnetic fields, cosmic rays, and radio polarimetry." />
+  <link rel="canonical" href="https://vasundharashaw.github.io/index.html" />
+  <meta name="color-scheme" content="light dark" />
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Dr Vasundhara (Vasu) Shaw — Astrophysicist" />
+  <meta property="og:description" content="GMF modelling • UHECRs • Radio polarimetry • CRPropa3" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vasundharashaw.github.io/" />
+  <meta property="og:image" content="assets/vasu-card.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9fb;
-            color: #333;
-        }
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
-        .profile-img {
-            width: 140px;
-            border-radius: 50%;
-            border: 4px solid #dee2e6;
-            margin-bottom: 1rem;
-        }
+  <style>
+    :root{
+      --brand:#4a4e69;
+      --bg:#f9f9fb; --fg:#333; --muted:#666; --card:#fff; --ring:#dadde2;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0c10; --fg:#e8edf1; --muted:#a9b4bf; --card:#12141a; --ring:#232633; --brand:#9ab3ff;
+      }
+      img{ filter: none !important; }
+    }
 
-        .card {
-            background: white;
-            border: none;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        }
+    html,body{ height:100% }
+    body{
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:var(--bg); color:var(--fg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
 
-        .nav-pills .nav-link.active {
-            background-color: #4a4e69;
-        }
+    .container-narrow{ max-width: 980px; }
 
-        .nav-pills .nav-link {
-            color: #4a4e69;
-            font-weight: 500;
-        }
+    /* Header / nav */
+    .brand{ font-weight:700; letter-spacing:.2px; color:var(--fg); text-decoration:none; }
+    .nav-pills .nav-link{ color:var(--brand); font-weight:600; }
+    .nav-pills .nav-link.active{ background-color:var(--brand); }
 
-        a {
-            color: #4a4e69;
-        }
+    /* Card */
+    .card{
+      background:var(--card); border:none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      border-radius: 1rem;
+    }
 
-        footer {
-            color: #888;
-        }
-    </style>
+    /* Profile image */
+    .profile-img{
+      width: 150px; aspect-ratio: 1/1; object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--ring);
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    }
+
+    a{ color:var(--brand); }
+    a:hover{ opacity:.9; }
+
+    .kicker{ font-size:.9rem; color:var(--muted) }
+
+    footer{ color:var(--muted) }
+
+    /* Better spacing for long text */
+    .leadish{ font-size:1.05rem; line-height:1.75 }
+
+    /* Skip link for accessibility */
+    .skip-link{
+      position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      position:static; width:auto; height:auto; padding:.5rem .75rem; background:var(--brand); color:#fff; border-radius:.5rem;
+    }
+  </style>
+
+  <!-- Person schema (improves search previews) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Vasundhara Shaw",
+    "alternateName":"Vasu Shaw",
+    "jobTitle":"Postdoctoral Researcher",
+    "affiliation":{"@type":"CollegeOrUniversity","name":"University of Manchester"},
+    "url":"https://vasundharashaw.github.io/",
+    "image":"https://vasundharashaw.github.io/Vasu_image.jpeg",
+    "sameAs":[
+      "https://github.com/VasundharaShaw",
+      "https://orcid.org/0000-0002-5824-7191"
+    ]
+  }
+  </script>
 </head>
 <body>
 
-<div class="container py-5">
-    <!-- Header -->
-    <header class="mb-5">
-        <h1 class="fw-bold mb-3">Vasundhara Shaw</h1>
-        <nav class="nav nav-pills">
-            <a class="nav-link active" href="index.html">Home</a>
-            <a class="nav-link" href="research.html">Research</a>
-            <a class="nav-link" href="cv.html">CV</a>
-            <a class="nav-link" href="talks.html">Talks</a>
-        </nav>
-    </header>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- Content Card -->
-    <div class="card p-4">
-        <div class="row g-4">
-            <!-- Profile -->
-            <div class="col-md-4 text-center">
-                <img src="Vasu_image.jpeg" alt="Photo of Vasundhara Shaw" class="profile-img">
-                <p class="mt-3 mb-1 fw-semibold">Postdoctoral Researcher</p>
-                <p class="mb-2 small">
-                    Jodrell Bank Centre for Astrophysics<br>
-                    University of Manchester<br>
-                    Alan Turing Building<br>
-                    Oxford Rd, Manchester, M13 9PY
-                </p>
-                <p class="small">
-                    📧 <a href="mailto:vasundhara.shaw@manchester.ac.uk">Email</a><br>
-                    🔗 <a href="https://github.com/VasundharaShaw" target="_blank">GitHub</a><br>
-                    🧭 <a href="https://orcid.org/0000-0002-5824-7191" target="_blank">ORCID</a>
-                </p>
-            </div>
-
-            <!-- About Me -->
-            <div class="col-md-8">
-                <h2 class="fw-semibold">About Me</h2>
-
-                <p>Hiya! I'm Vasundhara Shaw, I go by Vasu, currently working as a postdoctoral researcher in astrophysics at the University of Manchester.</p>
-
-                <p>My work focuses on the intersection of topics in high energy physics like cosmic rays, the Galactic magnetic field, and radio astronomy — especially using data from surveys like 
-                <a href="https://cbass.web.ox.ac.uk/" target="_blank">C-BASS</a> and 
-                <a href="https://sites.google.com/inaf.it/spass" target="_blank">S-PASS</a>. 
-                I also build simulations to study how ultra-high energy cosmic rays might travel through the Galaxy, using tools like 
-                <a href="https://crpropa.github.io/CRPropa3/pages/Installation.html" target="_blank">CRPropa3</a>.</p>
-
-                <p>I enjoy working with code, data, and big sky maps. Along the way, I’ve been lucky to collaborate with great people through projects like POSSUM, and to contribute to both research papers and open-source tools.</p>
-
-                <p>Before this, I completed my PhD at DESY in Germany, where I started diving into cosmic ray transport and the structure of the Galactic halo. I try to balance the technical and collaborative sides of science, and I'm always open to learning more.</p>
-
-                <p>Outside research, I care about mentoring, equity in science, and occasionally help out with outreach or student support initiatives.</p>
-
-                <p>If you’re curious about my work or want to connect, feel free to browse around the site or get in touch.</p>
-            </div>
-        </div>
+<div class="container container-narrow py-5">
+  <!-- Header -->
+  <header class="mb-4">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+      <a class="brand h4 mb-0" href="index.html">Vasundhara Shaw</a>
+      <nav class="nav nav-pills">
+        <a class="nav-link active" href="index.html" aria-current="page">Home</a>
+        <a class="nav-link" href="research.html">Research</a>
+        <a class="nav-link" href="cv.html">CV</a>
+        <a class="nav-link" href="talks.html">Talks</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Footer -->
-    <footer class="mt-5 text-center small">
-        <hr>
-        <p>© 2025 Vasundhara Shaw</p>
-    </footer>
+  <!-- Content Card -->
+  <main id="main" class="card p-4 p-md-5">
+    <div class="row g-4 align-items-start">
+      <!-- Profile -->
+      <div class="col-md-4 text-center text-md-start">
+        <img
+          src="Vasu_image.jpeg"
+          alt="Portrait of Dr Vasundhara (Vasu) Shaw"
+          class="profile-img"
+          loading="lazy"
+          decoding="async">
+        <p class="mt-3 mb-1 fw-semibold">Postdoctoral Researcher</p>
+        <p class="mb-2 small">
+          Jodrell Bank Centre for Astrophysics<br>
+          University of Manchester<br>
+          Alan Turing Building, Oxford Rd<br>
+          Manchester, M13 9PY
+        </p>
+        <ul class="list-unstyled small mb-0">
+          <li>📧 <a href="mailto:vasundhara.shaw@manchester.ac.uk">Email</a></li>
+          <li>🔗 <a href="https://github.com/VasundharaShaw" target="_blank" rel="noopener">GitHub</a></li>
+          <li>🧭 <a href="https://orcid.org/0000-0002-5824-7191" target="_blank" rel="me noopener">ORCID</a></li>
+        </ul>
+      </div>
+
+      <!-- About Me -->
+      <div class="col-md-8">
+        <h1 class="h3 fw-semibold">About Me</h1>
+        <p class="leadish">
+          Hiya! I’m Vasundhara Shaw (I go by <strong>Vasu</strong>), currently a postdoctoral researcher in astrophysics at the University of Manchester.
+        </p>
+
+        <p class="leadish">
+          My work focuses on cosmic rays, the Galactic magnetic field, and radio astronomy — especially using data from
+          <a href="https://cbass.web.ox.ac.uk/" target="_blank" rel="noopener">C‑BASS</a> and
+          <a href="https://sites.google.com/inaf.it/spass" target="_blank" rel="noopener">S‑PASS</a>.
+          I build simulations to study how ultra‑high energy cosmic rays travel through the Galaxy, using
+          <a href="https://crpropa.github.io/CRPropa3/pages/Installation.html" target="_blank" rel="noopener">CRPropa3</a>.
+        </p>
+
+        <p class="leadish">
+          I enjoy working with code, data, and big sky maps; collaborating via projects like POSSUM; and contributing to research papers and open‑source tools.
+          I completed my PhD at DESY (Germany), exploring cosmic‑ray transport and the structure of the Galactic halo.
+        </p>
+
+        <p class="leadish">
+          Outside research, I care about mentoring, equity in science, and occasionally help with outreach and student support initiatives.
+          If you’re curious about my work or want to connect, feel free to browse around or get in touch.
+        </p>
+
+        <!-- Optional featured links block -->
+        <hr class="my-4" />
+        <div>
+          <div class="kicker mb-2">Featured</div>
+          <ul class="mb-0">
+            <li><a href="talks.html">Talks & slides</a></li>
+            <li><a href="cv.html">CV (web)</a> · <a href="assets/Vasundhara_Shaw_CV.pdf">PDF</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-5 text-center small">
+    <hr />
+    <p class="mb-1">© <span id="y">2025</span> Vasundhara Shaw</p>
+    <p class="mb-0">Last updated: <time id="lu" aria-label="Last updated date"></time></p>
+  </footer>
 </div>
 
+<script>
+  // Footer year + last updated (no external JS needed)
+  document.getElementById('y').textContent = new Date().getFullYear();
+  const d = new Date(document.lastModified);
+  document.getElementById('lu').textContent = d.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'2-digit'});
+</script>
 </body>
 </html>
