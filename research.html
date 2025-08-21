@@ -1,36 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Research | Vasundhara Shaw</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light text-dark">
-<div class="container py-5">
-    <nav class="nav nav-pills mb-4">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link active" href="research.html">Research</a>
-        <a class="nav-link" href="cv.html">CV</a>
-        <a class="nav-link" href="talks.html">Talks</a>
-    </nav>
+  <meta charset="UTF-8">
+  <title>Research | Vasundhara Shaw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #fff;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+    .nav-pills .nav-link { color: #9ab3ff; font-weight: 600; }
+    .nav-pills .nav-link.active { background-color: #9ab3ff; color: #0b0c10; }
+    a { color: #9ab3ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .card {
+      background-color: #151821;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,.4);
+      margin-bottom: 2rem;
+    }
+    h1, h2 { color: #fff; font-weight: 600; }
+    .pub-list li { margin-bottom: .6rem; }
+    .project-img {
+      max-width: 100%;
+      border-radius: 0.5rem;
+      margin-top: 0.6rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.5);
+    }
+  </style>
+</head>
+<body>
+<div class="container py-5">
+
+  <!-- Navigation -->
+  <nav class="nav nav-pills mb-4">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-link active" href="research.html">Research</a>
+    <a class="nav-link" href="cv.html">CV</a>
+    <a class="nav-link" href="talks.html">Talks</a>
+  </nav>
+
+  <!-- Research Interests -->
+  <div class="card">
     <h1>Research Interests</h1>
     <ul>
-        <li>Galactic magnetic field modeling and template fitting</li>
-        <li>Ultra-high energy cosmic ray (UHECR) diffusion and deflections</li>
-        <li>Analysis of polarised synchrotron maps from C-BASS and S-PASS</li>
-        <li>Numerical simulations with CRPropa3</li>
-        <li>High-performance computing and big data astrophysics</li>
+      <li>Galactic magnetic field modeling and template fitting</li>
+      <li>Ultra-high energy cosmic ray (UHECR) diffusion and deflections</li>
+      <li>Analysis of polarised synchrotron maps from C-BASS and S-PASS</li>
+      <li>Numerical simulations with CRPropa3</li>
+      <li>High-performance computing and big data astrophysics</li>
     </ul>
+  </div>
 
+  <!-- Technical Tools -->
+  <div class="card">
     <h2>Technical Tools</h2>
     <ul>
-        <li>CRPropa3, Healpy, Astropy, NiFTy</li>
-        <li>Python, C++, Fortran</li>
-        <li>Cluster computing, MPI, HPC environments</li>
-        <li>Scientific visualisation with Matplotlib and Plotly</li>
+      <li>CRPropa3, Healpy, Astropy, NiFTy</li>
+      <li>Python, C++, Fortran</li>
+      <li>Cluster computing, MPI, HPC environments</li>
+      <li>Scientific visualisation with Matplotlib and Plotly</li>
     </ul>
+  </div>
+
+  <!-- Publications -->
+  <div class="card">
+    <h2>Selected Publications</h2>
+    <ul class="pub-list">
+      <li>
+        V. Shaw, A. van Vliet, A. Taylor (2022). 
+        <em>Galactic halo bubble magnetic fields and UHECR deflections</em>, 
+        <a href="https://doi.org/10.1093/mnras/stac2778" target="_blank">MNRAS</a>.
+      </li>
+      <li>
+        V. Shaw, A. van Vliet, A. Taylor (2025). 
+        <em>Influence of the Galactic Halo on the UHECR Multipoles</em>, 
+        <a href="https://arxiv.org/abs/2501.16881" target="_blank">arXiv:2501.16881</a> (submitted).
+      </li>
+      <li>
+        B. M. Gaensler et al. (incl. V. Shaw) (2025). 
+        <em>The Polarisation Sky Survey of the Universe’s Magnetism (POSSUM): Science Goals and Survey Description</em>, 
+        <a href="https://arxiv.org/abs/2505.08272" target="_blank">arXiv:2505.08272</a>, PASA (accepted).
+      </li>
+      <li>
+        V. Shaw et al. (2022). 
+        <em>Magnetic fields in the Galactic halo bubbles and deflections of UHECRs</em>, 
+        <a href="https://pos.sissa.it/444/480/" target="_blank">ICRC Proceedings</a>.
+      </li>
+      <li>
+        V. Shaw et al. (in prep., 2025). 
+        <em>Template-fitting constraints on GMF models</em>.
+      </li>
+    </ul>
+  </div>
+
+  <!-- Projects & Figures (commented out for now) -->
+  <!--
+  <div class="card">
+    <h2>Projects & Figures</h2>
+    <p>
+      My research combines simulations and observations to study the Galactic magnetic field and its effect on cosmic rays. 
+      Below are some example figures from my published work.
+    </p>
+
+    <h5>UHECR Deflections in Galactic Halo Fields (MNRAS 2022)</h5>
+    <img src="assets/uhcer_deflections.png" alt="Sky map of UHECR deflections in Galactic halo fields" class="project-img">
+
+    <h5>Synchrotron Emission in Halo Bubbles (PhD Thesis)</h5>
+    <img src="assets/halo_synchrotron.png" alt="Synchrotron emission maps of the Galactic halo bubble regions" class="project-img">
+
+    <h5>Template-Fitting GMF Models vs C-BASS/S-PASS (work in progress)</h5>
+    <img src="assets/template_fit.png" alt="Template fitting plots comparing GMF models and 5 GHz synchrotron maps" class="project-img">
+  </div>
+  -->
+
 </div>
 </body>
 </html>
