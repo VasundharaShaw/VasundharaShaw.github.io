@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <title>Research | Vasundhara Shaw</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Research interests, tools, and selected publications by Dr Vasundhara (Vasu) Shaw: Galactic magnetic fields, UHECRs, radio polarimetry, and simulations with CRPropa3." />
+  <meta name="description" content="Research, technical skills, and selected publications by Dr Vasundhara (Vasu) Shaw: Galactic magnetic fields, UHECRs, radio polarimetry, CRPropa3 simulations, and HPC." />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
     :root{
-      color-scheme: dark;                /* tell browsers we're dark */
+      color-scheme: dark;
       --brand:#9ab3ff;
       --bg:#0b0c10;
       --fg:#ffffff;
@@ -17,7 +17,7 @@
       --card:#151821;
       --ring:#2a2f3b;
 
-      /* Bootstrap variables so components inherit our palette */
+      /* Bootstrap variables */
       --bs-body-bg: var(--bg);
       --bs-body-color: var(--fg);
       --bs-heading-color: var(--fg);
@@ -33,7 +33,7 @@
       background: var(--bg);
       color: var(--fg);
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      font-size: 1.1rem;    /* 17–18px feel */
+      font-size: 1.1rem;
       line-height: 1.75;
     }
 
@@ -59,24 +59,24 @@
     h2{ font-size: 1.5rem; }
     ul{ margin-bottom: 0; }
     ul li{ color: var(--fg); }
-    ul li::marker{ color:#7f92ff; } /* subtle colored bullet */
+    ul li::marker{ color:#7f92ff; }
 
     /* Links */
     a{ color: var(--brand); text-decoration: none; font-weight: 600; }
     a:hover{ text-decoration: underline; }
 
-    /* Publications spacing */
     .pub-list li{ margin-bottom: .6rem; }
 
-    /* Optional images (kept commented in HTML) */
+    .badge-tag{
+      display:inline-block; background:#1d2130; color:#d7def2; border:1px solid var(--ring);
+      padding:.2rem .5rem; border-radius:.5rem; font-size:.85rem; margin:.15rem .25rem 0 0;
+    }
+
     .project-img{
-      max-width: 100%;
-      border-radius: .5rem;
-      margin-top: .6rem;
+      max-width: 100%; border-radius: .5rem; margin-top: .6rem;
       box-shadow: 0 6px 18px rgba(0,0,0,.5);
     }
 
-    /* Divider */
     hr{ border-color: var(--ring) !important; opacity: 1; }
   </style>
 </head>
@@ -104,15 +104,74 @@
     </ul>
   </div>
 
-  <!-- Technical Tools -->
+  <!-- Technical Skills (full) -->
   <div class="card">
-    <h2>Technical Tools</h2>
-    <ul>
-      <li>CRPropa3, Healpy, Astropy, NiFTy</li>
-      <li>Python, C++, Fortran</li>
-      <li>Cluster computing, MPI, HPC environments</li>
-      <li>Scientific visualisation with Matplotlib and Plotly</li>
-    </ul>
+    <h2>Technical Skills</h2>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h6 class="text-uppercase text-muted">Programming</h6>
+        <ul>
+          <li>Python, C++, Fortran, MATLAB</li>
+        </ul>
+
+        <h6 class="text-uppercase text-muted mt-3">Data Analysis & Statistics</h6>
+        <ul>
+          <li>Pandas, NumPy, SciPy</li>
+          <li>Time‑series analysis; Bayesian inference</li>
+        </ul>
+
+        <h6 class="text-uppercase text-muted mt-3">Machine Learning</h6>
+        <ul>
+          <li>scikit‑learn, PyTorch (foundational)</li>
+        </ul>
+
+        <h6 class="text-uppercase text-muted mt-3">Scientific Libraries</h6>
+        <ul>
+          <li>CRPropa3, Healpy, Astropy, NiFTy</li>
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <h6 class="text-uppercase text-muted">HPC & Parallel</h6>
+        <ul>
+          <li>MPI, SLURM, HTCondor; cluster environments</li>
+          <li>Simulation pipelines; performance‑aware workflows</li>
+        </ul>
+
+        <h6 class="text-uppercase text-muted mt-3">Data Engineering</h6>
+        <ul>
+          <li>Structured formats (FITS); remote‑sensing workflows</li>
+          <li>Reproducible Jupyter/Git pipelines</li>
+        </ul>
+
+        <h6 class="text-uppercase text-muted mt-3">Visualisation</h6>
+        <ul>
+          <li>Matplotlib, Plotly, Healpy sky maps</li>
+        </ul>
+
+        <h6 class="text-uppercase text-muted mt-3">Version Control & Collaboration</h6>
+        <ul>
+          <li>Git, GitHub; code reviews; FAIR practices</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- quick tags (optional visual summary) -->
+    <div class="mt-3">
+      <span class="badge-tag">CRPropa3</span>
+      <span class="badge-tag">Healpy</span>
+      <span class="badge-tag">Astropy</span>
+      <span class="badge-tag">MPI</span>
+      <span class="badge-tag">HTCondor</span>
+      <span class="badge-tag">SLURM</span>
+      <span class="badge-tag">Pandas</span>
+      <span class="badge-tag">NumPy</span>
+      <span class="badge-tag">Matplotlib</span>
+      <span class="badge-tag">Plotly</span>
+      <span class="badge-tag">Git</span>
+      <span class="badge-tag">FITS</span>
+    </div>
   </div>
 
   <!-- Publications -->
@@ -132,4 +191,40 @@
       <li>
         B. M. Gaensler et&nbsp;al. (incl. V. Shaw) (2025).
         <em>The Polarisation Sky Survey of the Universe’s Magnetism (POSSUM): Science Goals and Survey Description</em>,
-        <a href="https://arxiv.org/abs/2505.08272" target="_blank" rel="noopene_
+        <a href="https://arxiv.org/abs/2505.08272" target="_blank" rel="noopener">arXiv:2505.08272</a>, PASA (accepted).
+      </li>
+      <li>
+        V. Shaw et&nbsp;al. (2023).
+        <em>Magnetic fields in the Galactic halo bubbles and deflections of UHECRs</em>,
+        <a href="https://pos.sissa.it/444/480/" target="_blank" rel="noopener">ICRC Proceedings</a>.
+      </li>
+      <li>
+        V. Shaw et&nbsp;al. (in prep., 2025).
+        <em>Template‑fitting constraints on GMF models</em>.
+      </li>
+    </ul>
+  </div>
+
+  <!-- Projects & Figures (commented out for now) -->
+  <!--
+  <div class="card">
+    <h2>Projects & Figures</h2>
+    <p>
+      My research combines simulations and observations to study the Galactic magnetic field and its effect on cosmic rays.
+      Below are example figures from my published and ongoing work.
+    </p>
+
+    <h5>UHECR Deflections in Galactic Halo Fields (MNRAS 2022)</h5>
+    <img src="assets/uhcer_deflections.png" alt="Sky map of UHECR deflections in Galactic halo fields" class="project-img">
+
+    <h5>Synchrotron Emission in Halo Bubbles (PhD Thesis)</h5>
+    <img src="assets/halo_synchrotron.png" alt="Synchrotron emission maps of the Galactic halo bubble regions" class="project-img">
+
+    <h5>Template‑Fitting GMF Models vs C‑BASS/S‑PASS (work in progress)</h5>
+    <img src="assets/template_fit.png" alt="Template‑fitting plots comparing GMF models and 5 GHz synchrotron maps" class="project-img">
+  </div>
+  -->
+
+</div>
+</body>
+</html>
