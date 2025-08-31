@@ -1,10 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>CV | Vasundhara Shaw</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons (optional, used for small icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --vs-accent:#2b6cb0;       /* calm blue accent */
+      --vs-accent-weak:#e7f0fb;  /* pale accent background */
+      --vs-border:#e9ecef;       /* soft borders */
+      --vs-text:#1f2937;         /* slate-ish dark text */
+      --vs-muted:#6b7280;        /* muted text */
+    }
+
+    body{ background:#f8fafc; color:var(--vs-text); }
+    a{ color:var(--vs-accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    /* Nav */
+    .nav-pills .nav-link.active{
+      background:var(--vs-accent);
+    }
+
+    /* Header */
+    header h1{
+      font-weight:700;
+      letter-spacing: .3px;
+    }
+    header p a{
+      margin: 0 .25rem;
+      white-space: nowrap;
+    }
+
+    /* Section cards */
+    .cv-section{
+      background:#fff;
+      border:1px solid var(--vs-border);
+      border-radius: 14px;
+      padding: 1.25rem 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,.03);
+    }
+
+    /* Section headings */
+    .cv-section h2{
+      font-size:1.35rem;
+      font-weight:700;
+      margin-bottom:.75rem;
+      position:relative;
+      padding-bottom:.4rem;
+    }
+    .cv-section h2::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:64px;
+      height:3px;
+      background:var(--vs-accent);
+      border-radius:3px;
+      opacity:.9;
+    }
+
+    /* Subheadings */
+    h3{
+      font-size:1.1rem;
+      font-weight:700;
+      margin-top:.5rem;
+      margin-bottom:.25rem;
+    }
+
+    /* Meta text / dates */
+    .meta{
+      color:var(--vs-muted);
+      font-size:.95rem;
+      margin-top:-.15rem;
+      margin-bottom:.6rem;
+    }
+
+    /* Lists */
+    ul{
+      margin-bottom:.5rem;
+    }
+    ul li{
+      margin: .25rem 0;
+    }
+
+    /* “pill” label for small chips if needed later */
+    .pill{
+      display:inline-block;
+      padding:.15rem .5rem;
+      border-radius:999px;
+      background:var(--vs-accent-weak);
+      color:var(--vs-accent);
+      font-size:.8rem;
+      font-weight:600;
+      border:1px solid #d6e6fb;
+    }
+
+    /* Link row under H1 on small screens */
+    .link-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem .75rem;
+      justify-content:center;
+    }
+
+    /* Print-friendly tweaks */
+    @media print{
+      body{ background:#fff; }
+      .nav, .nav-pills, .nav-link{ display:none !important; }
+      .cv-section{ box-shadow:none; border-color:#ddd; break-inside: avoid; }
+      a{ color:#000; text-decoration:underline; }
+      .container-lg{ padding:0 !important; }
+    }
+  </style>
 </head>
 <body class="bg-light text-dark">
 <div class="container-lg py-5">
@@ -18,157 +135,155 @@
   </nav>
 
   <!-- Header -->
-  <header class="text-center mb-5">
+  <header class="text-center mb-4">
     <h1>Dr Vasundhara Shaw</h1>
-    <p>
-      <a href="mailto:vasundhara.shaw@manchester.ac.uk">vasundhara.shaw@manchester.ac.uk</a> |
-      <a href="https://vasundharashaw.github.io/VasundharaShaw.github.io/">Website</a> |
-      <a href="https://github.com/VasundharaShaw">GitHub</a> |
-      <a href="https://orcid.org/0000-0002-5824-7191">ORCID</a> |
-      <a href="https://www.linkedin.com/in/vasundhara-shaw-9a6a8b118/">LinkedIn</a>
-    </p>
+    <div class="link-row mt-2">
+      <a href="mailto:vasundhara.shaw@manchester.ac.uk"><i class="bi bi-envelope"></i> vasundhara.shaw@manchester.ac.uk</a>
+      <span class="text-muted">|</span>
+      <a href="https://vasundharashaw.github.io/VasundharaShaw.github.io/"><i class="bi bi-globe2"></i> Website</a>
+      <span class="text-muted">|</span>
+      <a href="https://github.com/VasundharaShaw"><i class="bi bi-github"></i> GitHub</a>
+      <span class="text-muted">|</span>
+      <a href="https://orcid.org/0000-0002-5824-7191"><i class="bi bi-box-arrow-up-right"></i> ORCID</a>
+      <span class="text-muted">|</span>
+      <a href="https://www.linkedin.com/in/vasundhara-shaw-9a6a8b118/"><i class="bi bi-linkedin"></i> LinkedIn</a>
+    </div>
   </header>
 
-<!--   <!-- Professional Summary -->
-  <h2>Professional Summary</h2>
-  <p>
-    Astrophysicist and interdisciplinary researcher with expertise in physical modelling,
-    large-scale data analysis, and collaborative project management. Currently a postdoctoral
-    researcher at the University of Manchester, I lead and support multi-institutional projects
-    that integrate high-performance computing, simulation pipelines, and data-driven validation,
-    with experience gained through active participation in international collaborations such as
-    <a href="https://cbass.web.ox.ac.uk/">C-BASS</a> and <a href="https://askap.org/possum/">POSSUM</a>.
-  </p>
-  <p>
-    Beyond research, I bring proven experience in project coordination, third-party funding
-    applications, and the organisation of scientific meetings and infrastructure planning,
-    including stakeholder engagement across institutional and disciplinary boundaries. I am
-    motivated to apply these analytical, organisational, and communication skills to support the
-    coordination and visibility of data-intensive, relevant research, contributing to innovative
-    science with direct societal impact.
-  </p> -->
-
   <!-- Technical Skills -->
-  <h2>Technical Skills</h2>
-  <ul>
-    <li><strong>Programming Languages:</strong> Python, C++, Fortran, MATLAB</li>
-    <li><strong>Data Analysis & Statistics:</strong> Pandas, NumPy, SciPy; time series analysis; Bayesian inference</li>
-    <li><strong>Machine Learning:</strong> Basic experience with scikit-learn and PyTorch</li>
-    <li><strong>Scientific Libraries:</strong> CRPropa3, Healpy, Astropy, NiFTy</li>
-    <li><strong>Map Creation & Visualisation:</strong> Matplotlib, Plotly, Healpy; introductory GIS training in progress</li>
-    <li><strong>High-Performance Computing:</strong> HPC environments; MPI; HTCondor, SLURM</li>
-    <li><strong>Data Engineering:</strong> Simulation pipelines; FITS; remote sensing workflows</li>
-    <li><strong>Version Control & Reproducibility:</strong> Git, GitHub; Jupyter-based workflows</li>
-    <li><strong>Productivity & Office Tools:</strong> Microsoft Office; collaborative document workflows</li>
-    <li><strong>Soft Skills:</strong> Project coordination, stakeholder engagement, science communication, cross-cultural teamwork</li>
-    <li><strong>Languages:</strong> English (native), German (intermediate), French (basic), Hindi, Bengali</li>
-  </ul>
+  <section class="cv-section">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li><strong>Programming Languages:</strong> Python, C++, Fortran, MATLAB</li>
+      <li><strong>Data Analysis &amp; Statistics:</strong> Pandas, NumPy, SciPy; time series analysis; Bayesian inference</li>
+      <li><strong>Machine Learning:</strong> Basic experience with scikit-learn and PyTorch</li>
+      <li><strong>Scientific Libraries:</strong> CRPropa3, Healpy, Astropy, NiFTy</li>
+      <li><strong>Map Creation &amp; Visualisation:</strong> Matplotlib, Plotly, Healpy; introductory GIS training in progress</li>
+      <li><strong>High-Performance Computing:</strong> HPC environments; MPI; HTCondor, SLURM</li>
+      <li><strong>Data Engineering:</strong> Simulation pipelines; FITS; remote sensing workflows</li>
+      <li><strong>Version Control &amp; Reproducibility:</strong> Git, GitHub; Jupyter-based workflows</li>
+      <li><strong>Productivity &amp; Office Tools:</strong> Microsoft Office; collaborative document workflows</li>
+      <li><strong>Soft Skills:</strong> Project coordination, stakeholder engagement, science communication, cross-cultural teamwork</li>
+      <li><strong>Languages:</strong> English (native), German (intermediate), French (basic), Hindi, Bengali</li>
+    </ul>
+  </section>
 
   <!-- Work Experience -->
-  <h2>Work Experience</h2>
+  <section class="cv-section">
+    <h2>Work Experience</h2>
 
-  <h3>Postdoctoral Research Associate</h3>
-  <p><a href="https://www.jodrellbank.manchester.ac.uk/">Jodrell Bank Centre for Astrophysics</a>, University of Manchester, UK<br>
-  <em>Dec 2023 – Present</em></p>
-  <p><strong>Projects:</strong></p>
-  <ul>
-    <li>Leading comparison of multiple GMF models with full-sky 5 GHz synchrotron data (C-BASS, S-PASS)</li>
-    <li>Developed template-fitting framework with rotation measure maps</li>
-    <li>Extended UHECR propagation simulations using CRPropa3 in updated halo models</li>
-    <li>Contributed to C-BASS data analysis (polarisation morphology, QU pipelines)</li>
-  </ul>
-  <p><strong>Outcomes:</strong></p>
-  <ul>
-    <li>First-author paper on UHECR multipoles (submitted, 2025)</li>
-    <li>First-author template-fitting paper (in prep)</li>
-    <li>Co-author on C-BASS science papers</li>
-    <li>Reusable GMF-model evaluation pipeline</li>
-    <li>Coordinated collaborations (C-BASS, POSSUM) and initiated new projects</li>
-  </ul>
+    <h3>Postdoctoral Research Associate</h3>
+    <div class="meta">
+      <a href="https://www.jodrellbank.manchester.ac.uk/">Jodrell Bank Centre for Astrophysics</a>, University of Manchester, UK · <em>Dec 2023 – Present</em>
+    </div>
+    <p class="mb-1"><strong>Projects:</strong></p>
+    <ul>
+      <li>Leading comparison of multiple GMF models with full-sky 5&nbsp;GHz synchrotron data (C-BASS, S-PASS)</li>
+      <li>Developed template-fitting framework with rotation measure maps</li>
+      <li>Extended UHECR propagation simulations using CRPropa3 in updated halo models</li>
+      <li>Contributed to C-BASS data analysis (polarisation morphology, QU pipelines)</li>
+    </ul>
+    <p class="mb-1"><strong>Outcomes:</strong></p>
+    <ul>
+      <li>First-author paper on UHECR multipoles (submitted, 2025)</li>
+      <li>First-author template-fitting paper (in prep)</li>
+      <li>Co-author on C-BASS science papers</li>
+      <li>Reusable GMF-model evaluation pipeline</li>
+      <li>Coordinated collaborations (C-BASS, POSSUM) and initiated new projects</li>
+    </ul>
 
-  <h3>Doctoral Researcher</h3>
-  <p><a href="https://astroparticle-physics.desy.de/">DESY</a>, Zeuthen, Germany<br>
-  <em>Jul 2018 – Dec 2023</em></p>
-  <p><strong>Thesis:</strong> Cosmic ray transport and signatures in their local environment<br>
-  Supervisors: Andrew Taylor, Arjen van Vliet</p>
-  <ul>
-    <li>Modeled GMF in halo; generated synchrotron maps of Fermi/eRosita bubbles</li>
-    <li>Fitted Planck 30 GHz data to constrain halo fields and benchmark models</li>
-    <li>Simulated UHECR arrival maps with CRPropa3; compared with observations</li>
-    <li>Established framework for UHECR anisotropy studies</li>
-  </ul>
-  <p><strong>Outcomes:</strong></p>
-  <ul>
-    <li>First-author publication on UHECR deflections (MNRAS 2022)</li>
-    <li>Framework reused in postdoc research</li>
-  </ul>
+    <hr class="my-4">
 
-  <!-- Project Management -->
-<!--   <h2>Project Management & Funding</h2>
-  <ul>
-    <li>Coordinated deliverables and contributed to funding proposals at DESY CQTA</li>
-    <li>Planned and organised interdisciplinary workshops with academia & industry</li>
-    <li>Oversaw HPC documentation, reporting, and planning</li>
-    <li>Liaised between researchers, admin, and stakeholders</li>
-  </ul>
- -->
+    <h3>Doctoral Researcher</h3>
+    <div class="meta">
+      <a href="https://astroparticle-physics.desy.de/">DESY</a>, Zeuthen, Germany · <em>Jul 2018 – Dec 2023</em>
+    </div>
+    <p class="mb-1">
+      <strong>Thesis:</strong> Cosmic ray transport and signatures in their local environment<br>
+      Supervisors: Andrew Taylor, Arjen van Vliet
+    </p>
+    <ul>
+      <li>Modeled GMF in halo; generated synchrotron maps of Fermi/eRosita bubbles</li>
+      <li>Fitted Planck 30&nbsp;GHz data to constrain halo fields and benchmark models</li>
+      <li>Simulated UHECR arrival maps with CRPropa3; compared with observations</li>
+      <li>Established framework for UHECR anisotropy studies</li>
+    </ul>
+    <p class="mb-1"><strong>Outcomes:</strong></p>
+    <ul>
+      <li>First-author publication on UHECR deflections (MNRAS 2022)</li>
+      <li>Framework reused in postdoc research</li>
+    </ul>
+  </section>
+
   <!-- Publications -->
-  <h2>Publications</h2>
-  <ul>
-    <li>Shaw, V., van Vliet, A., Taylor, A. (2022). <em>Galactic halo bubble magnetic fields and UHECR deflections</em>, <a href="https://doi.org/10.1093/mnras/stac2778">MNRAS</a></li>
-    <li>Shaw, V., van Vliet, A., Taylor, A. (2025). <em>Influence of the Galactic Halo on the UHECR Multipoles</em>, <a href="https://arxiv.org/abs/2501.16881">arXiv</a></li>
-    <li>Gaensler, B. M. et al. (incl. V. Shaw). <em>POSSUM Science Goals and Survey Description</em>, <a href="https://arxiv.org/abs/2505.08272">PASA, 2025</a></li>
-    <li>Shaw, V., et al. (2022). <em>Magnetic fields in Galactic halo bubbles and UHECR deflections</em>, <a href="https://pos.sissa.it/444/480/">ICRC 2023</a></li>
-  </ul>
+  <section class="cv-section">
+    <h2>Publications</h2>
+    <ul>
+      <li>Shaw, V., van Vliet, A., Taylor, A. (2022). <em>Galactic halo bubble magnetic fields and UHECR deflections</em>, <a href="https://doi.org/10.1093/mnras/stac2778">MNRAS</a></li>
+      <li>Shaw, V., van Vliet, A., Taylor, A. (2025). <em>Influence of the Galactic Halo on the UHECR Multipoles</em>, <a href="https://arxiv.org/abs/2501.16881">arXiv</a></li>
+      <li>Gaensler, B. M. et&nbsp;al. (incl. V. Shaw). <em>POSSUM Science Goals and Survey Description</em>, <a href="https://arxiv.org/abs/2505.08272">PASA, 2025</a></li>
+      <li>Shaw, V., et&nbsp;al. (2022). <em>Magnetic fields in Galactic halo bubbles and UHECR deflections</em>, <a href="https://pos.sissa.it/444/480/">ICRC 2023</a></li>
+    </ul>
+  </section>
 
-  <!-- Conferences -->
-  <h2>Conferences & Workshops</h2>
-  <p>Selected talks: <a href="https://drive.google.com/drive/folders/11w3gzazoDZDJWj-UAb6qtcE55rqgjBYB?usp=sharing">link</a></p>
-  <ul>
-    <li>2025 – DESY AP seminar (invited)</li>
-    <li>2025 – Workshop (invited)</li>
-    <li>2025 – Stellar Lecture Series, Manchester (invited)</li>
-    <li>2024 – COMRAD, Pisa</li>
-    <li>2024 – Galactic Lunch Seminar, Manchester</li>
-    <li>2023 – IMAGINE Workshop, Stockholm</li>
-  </ul>
+  <!-- Conferences & Workshops -->
+  <section class="cv-section">
+    <h2>Conferences &amp; Workshops</h2>
+    <p class="mb-2">Selected talks: <a href="https://drive.google.com/drive/folders/11w3gzazoDZDJWj-UAb6qtcE55rqgjBYB?usp=sharing">link</a></p>
+    <ul>
+      <li>2025 – DESY AP seminar (invited)</li>
+      <li>2025 – Workshop (invited)</li>
+      <li>2025 – Stellar Lecture Series, Manchester (invited)</li>
+      <li>2024 – COMRAD, Pisa</li>
+      <li>2024 – Galactic Lunch Seminar, Manchester</li>
+      <li>2023 – IMAGINE Workshop, Stockholm</li>
+    </ul>
+  </section>
 
   <!-- Education -->
-  <h2>Education</h2>
-  <ul>
-    <li><strong>PhD in Physics (Astrophysics)</strong>, University of Potsdam / DESY, 2018–2023</li>
-    <li><strong>M2 Plasma Physics & Fusion</strong>, Sorbonne Université, Paris, 2016–2017 (internship at Observatoire de Paris)</li>
-    <li><strong>MSc Physics</strong>, Pondicherry University, India, 2014–2016</li>
-  </ul>
+  <section class="cv-section">
+    <h2>Education</h2>
+    <ul>
+      <li><strong>PhD in Physics (Astrophysics)</strong>, University of Potsdam / DESY, 2018–2023</li>
+      <li><strong>M2 Plasma Physics &amp; Fusion</strong>, Sorbonne Université, Paris, 2016–2017 (internship at Observatoire de Paris)</li>
+      <li><strong>MSc Physics</strong>, Pondicherry University, India, 2014–2016</li>
+    </ul>
+  </section>
 
   <!-- Outreach -->
-  <h2>Outreach</h2>
-  <ul>
-    <li>2025 – JBCA Ted-style talk (Winner, most entertaining)</li>
-    <li>2025 – Stellar Lecture Series, Manchester (invited)</li>
-    <li>2024 – Radio interview, AllFM with Gurbir Singh (<a href="https://astrotalkuk.org/manchesterscience/#:~:text=8.">link</a>)</li>
-  </ul>
+  <section class="cv-section">
+    <h2>Outreach</h2>
+    <ul>
+      <li>2025 – JBCA Ted-style talk (Winner, most entertaining)</li>
+      <li>2025 – Stellar Lecture Series, Manchester (invited)</li>
+      <li>2024 – Radio interview, AllFM with Gurbir Singh (<a href="https://astrotalkuk.org/manchesterscience/#:~:text=8.">link</a>)</li>
+    </ul>
+  </section>
 
   <!-- Participation -->
-  <h3>Participation</h3>
-  <ul>
-    <li>Fermi Summer School (USA)</li>
-    <li>CRPropa Workshop (Germany)</li>
-    <li>Astro-GR@Cuba</li>
-  </ul>
+  <section class="cv-section">
+    <h2>Participation</h2>
+    <ul>
+      <li>Fermi Summer School (USA)</li>
+      <li>CRPropa Workshop (Germany)</li>
+      <li>Astro-GR@Cuba</li>
+    </ul>
+  </section>
 
   <!-- Teaching & Service -->
-  <h2>Teaching & Service</h2>
-  <ul>
-    <li>SOC member, Galactic Science session, NAM 2025</li>
-    <li>Colloquium committee, JBCA (since 2024)</li>
-    <li>Organiser, Galactic lunch seminars, JBCA</li>
-    <li>Early Career Researcher representative, Univ. of Manchester</li>
-    <li>EquiTea member, Jodrell Bank (diversity forum)</li>
-    <li>Teaching Assistant (Electrodynamics), University of Potsdam</li>
-    <li>Scientific Coordinator, CQTA (DESY, 2022–2023)</li>
-    <li>PhD Rep & Helmholtz Juniors Council (DESY, 2019–2020)</li>
-  </ul>
+  <section class="cv-section">
+    <h2>Teaching &amp; Service</h2>
+    <ul>
+      <li>SOC member, Galactic Science session, NAM 2025</li>
+      <li>Colloquium committee, JBCA (since 2024)</li>
+      <li>Organiser, Galactic lunch seminars, JBCA</li>
+      <li>Early Career Researcher representative, Univ. of Manchester</li>
+      <li>EquiTea member, Jodrell Bank (diversity forum)</li>
+      <li>Teaching Assistant (Electrodynamics), University of Potsdam</li>
+      <li>Scientific Coordinator, CQTA (DESY, 2022–2023)</li>
+      <li>PhD Rep &amp; Helmholtz Juniors Council (DESY, 2019–2020)</li>
+    </ul>
+  </section>
 
 </div>
 </body>
