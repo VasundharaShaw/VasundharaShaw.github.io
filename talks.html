@@ -1,91 +1,230 @@
-<!-- Talks Timeline -->
-<section class="timeline">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Talks | Vasundhara Shaw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- 2025 -->
-  <h2 class="section-heading">2025</h2>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">
-        Chalmers Colloquium
-        <span class="badge badge-invited ms-2">Invited</span>
-      </p>
-      <div class="talk-meta">Talk: <em>Comparison of GMF models with 5-GHz radio synchrotron sky</em></div>
+  <!-- Bootstrap Icons (optional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --vs-accent:#2b6cb0;        /* calm blue accent */
+      --vs-accent-weak:#e7f0fb;   /* pale accent */
+      --vs-border:#e9ecef;        /* soft borders */
+      --vs-text:#1f2937;          /* slate-ish dark text */
+      --vs-muted:#6b7280;         /* muted text */
+    }
+    body{ background:#f8fafc; color:var(--vs-text); }
+    a{ color:var(--vs-accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .nav-pills .nav-link.active{ background:var(--vs-accent); }
+
+    .page-title{
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:.25rem;
+    }
+    .subtitle{
+      color:var(--vs-muted);
+      margin-bottom:1.25rem;
+    }
+
+    /* Timeline */
+    .timeline{
+      position:relative;
+      margin-left:.5rem;
+      padding-left:1.25rem;
+      border-left:3px solid var(--vs-border);
+    }
+    .timeline-item{
+      position:relative;
+      padding: .75rem 0 .75rem 0.25rem;
+    }
+    .timeline-item::before{
+      content:"";
+      position:absolute;
+      left:-1.05rem;
+      top:1.1rem;
+      width:.75rem; height:.75rem;
+      background:#fff;
+      border:3px solid var(--vs-accent);
+      border-radius:50%;
+      box-shadow:0 0 0 3px #fff; /* halo for contrast */
+    }
+
+    .talk-card{
+      background:#fff;
+      border:1px solid var(--vs-border);
+      border-radius:14px;
+      padding:1rem 1rem;
+      box-shadow:0 4px 10px rgba(0,0,0,.03);
+    }
+
+    .talk-title{
+      margin:0;
+      font-weight:700;
+      font-size:1rem;
+    }
+    .talk-meta{
+      color:var(--vs-muted);
+      font-size:.95rem;
+    }
+    .badge-invited{
+      background:var(--vs-accent-weak);
+      color:var(--vs-accent);
+      border:1px solid #d6e6fb;
+      font-weight:600;
+    }
+
+    /* Section headings */
+    .section-heading{
+      font-size:1.25rem;
+      font-weight:700;
+      margin:1.75rem 0 .75rem;
+      position:relative;
+      padding-bottom:.35rem;
+    }
+    .section-heading::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:0;
+      width:60px; height:3px;
+      background:var(--vs-accent);
+      border-radius:3px;
+    }
+
+    /* Button row */
+    .cta-wrap{
+      text-align:center;
+      margin-top:1.5rem;
+    }
+
+    /* Print tweaks */
+    @media print{
+      body{ background:#fff; }
+      .nav{ display:none !important; }
+      a{ color:#000; text-decoration:underline; }
+      .talk-card{ box-shadow:none; border-color:#ddd; }
+      .timeline{ border-left:2px solid #ccc; }
+      .timeline-item::before{ border-color:#000; }
+    }
+  </style>
+</head>
+<body class="bg-light text-dark">
+<div class="container py-5">
+
+  <!-- Nav -->
+  <nav class="nav nav-pills mb-4 justify-content-center">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-link" href="cv.html">CV</a>
+    <a class="nav-link active" href="talks.html">Talks</a>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="mb-3 text-center">
+    <h1 class="page-title">Conferences &amp; Invited Talks</h1>
+    <p class="subtitle">Selected talks and appearances, grouped by year.</p>
+  </header>
+
+  <!-- Talks Timeline -->
+  <section class="timeline">
+
+    <!-- 2025 -->
+    <h2 class="section-heading">2025</h2>
+
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">
+          Chalmers Colloquium
+          <span class="badge badge-invited ms-2">Invited</span>
+        </p>
+        <div class="talk-meta">Talk: <em>Comparison of GMF models with 5-GHz radio synchrotron sky</em></div>
+      </div>
     </div>
-  </div>
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">
-        DESY Astroparticle Seminar
-        <span class="badge badge-invited ms-2">Invited</span>
-      </p>
-      <div class="talk-meta">Talk: <em>Comparison of GMF models with 5-GHz radio synchrotron sky</em></div>
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">
+          DESY Astroparticle Seminar
+          <span class="badge badge-invited ms-2">Invited</span>
+        </p>
+        <div class="talk-meta">Talk: <em>Comparison of GMF models with 5-GHz radio synchrotron sky</em></div>
+      </div>
     </div>
-  </div>
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">
-        Workshop
-        <span class="badge badge-invited ms-2">Invited</span>
-      </p>
-      <div class="talk-meta">Talk: <em>Comparison of GMF models with 5-GHz radio synchrotron sky</em></div>
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">
+          Workshop
+          <span class="badge badge-invited ms-2">Invited</span>
+        </p>
+        <div class="talk-meta">Talk: <em>Comparison of GMF models with 5-GHz radio synchrotron sky</em></div>
+      </div>
     </div>
-  </div>
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">
-        University of Manchester — Stellar Lecture Series
-        <span class="badge badge-invited ms-2">Invited</span>
-      </p>
-      <div class="talk-meta">Talk: <em>UHECR Propagation and the Galactic Halo</em></div>
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">
+          University of Manchester — Stellar Lecture Series
+          <span class="badge badge-invited ms-2">Invited</span>
+        </p>
+        <div class="talk-meta">Talk: <em>UHECR Propagation and the Galactic Halo</em></div>
+      </div>
     </div>
-  </div>
 
-  <!-- 2024 -->
-  <h2 class="section-heading">2024</h2>
+    <!-- 2024 -->
+    <h2 class="section-heading">2024</h2>
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">COMRAD, Pisa</p>
-      <div class="talk-meta">Talk: <em>C-BASS Polarization Survey Results</em></div>
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">COMRAD, Pisa</p>
+        <div class="talk-meta">Talk: <em>C-BASS Polarization Survey Results</em></div>
+      </div>
     </div>
-  </div>
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">Galactic Lunch Seminar, Manchester</p>
-      <div class="talk-meta">Talk: <em>Magnetic Fields and Cosmic Rays in Galactic Halo Bubbles</em></div>
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">Galactic Lunch Seminar, Manchester</p>
+        <div class="talk-meta">Talk: <em>Magnetic Fields and Cosmic Rays in Galactic Halo Bubbles</em></div>
+      </div>
     </div>
-  </div>
 
-  <!-- 2023 -->
-  <h2 class="section-heading">2023</h2>
+    <!-- 2023 -->
+    <h2 class="section-heading">2023</h2>
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">IMAGINE Workshop, Stockholm</p>
-      <div class="talk-meta">Talk: <em>Magnetic Fields in Galactic Halo Bubbles and UHECR Propagation</em></div>
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">IMAGINE Workshop, Stockholm</p>
+        <div class="talk-meta">Talk: <em>Magnetic Fields in Galactic Halo Bubbles and UHECR Propagation</em></div>
+      </div>
     </div>
-  </div>
 
-  <!-- 2022 -->
-  <h2 class="section-heading">2022</h2>
+    <!-- 2022 -->
+    <h2 class="section-heading">2022</h2>
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">Galactic Science and CMB Foregrounds, Tenerife</p>
-      <div class="talk-meta">Talk: <em>Galactic Halo Bubble Magnetic Fields and UHECRs</em></div>
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">Galactic Science and CMB Foregrounds, Tenerife</p>
+        <div class="talk-meta">Talk: <em>Galactic Halo Bubble Magnetic Fields and UHECRs</em></div>
+      </div>
     </div>
-  </div>
 
-  <div class="timeline-item">
-    <div class="talk-card">
-      <p class="talk-title">TeVPA Conference, Kingston</p>
-      <div class="talk-meta">Talk: <em>Galactic Halo Bubble Magnetic Fields and UHECRs</em></div>
+    <div class="timeline-item">
+      <div class="talk-card">
+        <p class="talk-title">TeVPA Conference, Kingston</p>
+        <div class="talk-meta">Talk: <em>Galactic Halo Bubble Magnetic Fields and UHECRs</em></div>
+      </div>
     </div>
-  </div>
 
-</section>
+  </section>
+
+</div>
+</body>
+</html>
