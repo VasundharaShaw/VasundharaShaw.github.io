@@ -1,205 +1,762 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Dr Vasundhara (Vasu) Shaw | Astrophysicist</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Postdoctoral researcher at the University of Manchester working on Galactic magnetic fields, cosmic rays, and radio polarimetry." />
-  <link rel="canonical" href="https://vasundharashaw.github.io/index.html" />
+<meta charset="UTF-8"/>
+<title>Dr Vasundhara (Vasu) Shaw | Astrophysicist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Postdoctoral astrophysicist at FIZ Karlsruhe. Galactic magnetic fields, UHECRs, radio polarimetry."/>
+<link rel="canonical" href="https://vasundharashaw.github.io/"/>
+<meta property="og:title" content="Dr Vasundhara Shaw — Astrophysicist"/>
+<meta property="og:description" content="GMF modelling · UHECRs · Radio polarimetry · CRPropa3"/>
+<meta property="og:type" content="website"/>
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Dr Vasundhara (Vasu) Shaw — Astrophysicist" />
-  <meta property="og:description" content="GMF modelling • UHECRs • Radio polarimetry • CRPropa3" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vasundharashaw.github.io/" />
-  <meta property="og:image" content="assets/vasu-card.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+/* ─── Reset & tokens ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:        #080b12;
+  --bg2:       #0d1120;
+  --bg3:       #111827;
+  --card:      #0f1523;
+  --border:    rgba(100,120,200,.14);
+  --border2:   rgba(100,120,200,.25);
+  --fg:        #e8eaf2;
+  --fg2:       #9ba3b8;
+  --fg3:       #5f6880;
+  --accent:    #7b9dff;
+  --accent2:   #a8c0ff;
+  --gold:      #f0c97a;
+  --teal:      #5ecfbb;
+  --radius:    14px;
+  --radius-sm: 8px;
+  --font:      'DM Sans', system-ui, sans-serif;
+  --mono:      'DM Mono', monospace;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--fg);
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent2);text-decoration:underline;text-underline-offset:3px}
+button{cursor:pointer;font-family:var(--font)}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+/* ─── Star canvas ────────────────────────────────── */
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.6}
 
-  <style>
-    :root{
-      --brand:#9ab3ff;      /* link/brand color */
-      --bg:#0b0c10;         /* page background */
-      --fg:#ffffff;         /* main text (white) */
-      --muted:#c3c8d1;      /* secondary text */
-      --card:#151821;       /* card background */
-      --ring:#2a2f3b;       /* borders around image */
-    }
+/* ─── Layout wrapper ─────────────────────────────── */
+.site{position:relative;z-index:1}
 
-    html,body{ height:100% }
-    body{
-      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background:var(--bg); color:var(--fg);
-      font-size:1.125rem;          /* 18px base */
-      line-height:1.75;            /* comfy reading */
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
+/* ─── Nav ────────────────────────────────────────── */
+nav.topnav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 2rem;
+  background:rgba(8,11,18,.85);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-brand{
+  font-size:1rem;font-weight:700;letter-spacing:.4px;color:var(--fg);
+  text-decoration:none;white-space:nowrap;
+}
+.nav-brand span{color:var(--accent)}
+.nav-links{display:flex;gap:.25rem;list-style:none}
+.nav-links a{
+  padding:.35rem .75rem;border-radius:var(--radius-sm);
+  color:var(--fg2);font-weight:500;font-size:.9rem;
+  transition:background .15s,color .15s;
+}
+.nav-links a:hover,.nav-links a.active{
+  background:rgba(123,157,255,.12);color:var(--accent);text-decoration:none;
+}
+.nav-links a.active{color:var(--accent2)}
 
-    .container-narrow{ max-width:980px; }
+/* ─── Sections ───────────────────────────────────── */
+.page{display:none;min-height:100vh;padding:3.5rem 1.5rem 5rem;max-width:900px;margin:0 auto}
+.page.visible{display:block}
 
-    /* Header / nav */
-    .brand{ font-weight:700; letter-spacing:.2px; color:var(--fg); text-decoration:none; }
-    .nav-pills .nav-link{ color:var(--brand); font-weight:600; }
-    .nav-pills .nav-link.active{ background-color:var(--brand); color:#0b0c10; }
+/* ─── Section titles ─────────────────────────────── */
+.section-label{
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;
+}
+.section-label::after{content:"";flex:1;height:1px;background:var(--border2)}
+h1.hero-name{
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;
+  color:#fff;margin-bottom:.5rem;
+}
+h1.hero-name em{font-style:normal;color:var(--accent)}
+.hero-role{font-size:1.05rem;color:var(--fg2);margin-bottom:.25rem;font-weight:400}
+.hero-inst{font-size:.95rem;color:var(--fg3);margin-bottom:1.75rem}
 
-    /* Card */
-    .card{
-      background:var(--card); color:var(--fg);
-      border:none; border-radius:1rem;
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-    }
+h2.page-title{font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:.25rem}
+h2.page-title span{color:var(--accent)}
+.page-sub{color:var(--fg2);margin-bottom:2.5rem;font-size:1rem}
 
-    /* Headings */
-    h1,h2,h3,h4,h5,h6{
-      color:#fff; line-height:1.25; margin-top:1rem; margin-bottom:.5rem;
-    }
-    h1{ font-size:2rem; }     /* ~32px */
-    h2{ font-size:1.5rem; }   /* ~24px */
+h3.card-title{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+h4.sub-head{font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--fg3);margin:.9rem 0 .35rem}
 
-    /* Paragraphs & small text */
-    p{ margin-bottom:1rem; color:var(--fg); }
-    .small, small{ color:var(--muted); font-size:.95rem; }
+/* ─── Cards ──────────────────────────────────────── */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.4rem 1.6rem;
+  margin-bottom:1.25rem;
+  transition:border-color .2s;
+}
+.card:hover{border-color:var(--border2)}
 
-    /* Links */
-    a{ color:var(--brand); font-weight:600; text-decoration:none; }
-    a:hover{ opacity:.9; text-decoration:underline; }
+/* ─── Hero layout ────────────────────────────────── */
+.hero-layout{display:flex;gap:3rem;align-items:flex-start;flex-wrap:wrap}
+.hero-photo-col{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.hero-text-col{flex:1;min-width:220px}
+.profile-img{
+  width:160px;height:160px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--border2);
+  box-shadow:0 0 40px rgba(123,157,255,.15);
+}
+.profile-placeholder{
+  width:160px;height:160px;border-radius:50%;
+  background:var(--bg3);border:2px dashed var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;color:var(--fg3);
+}
+.contact-links{display:flex;flex-direction:column;gap:.35rem;align-items:flex-start;width:100%}
+.contact-links a{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.85rem;color:var(--fg2);font-weight:500;
+  padding:.3rem .6rem;border-radius:var(--radius-sm);
+  border:1px solid transparent;
+  transition:border-color .15s,color .15s;
+  text-decoration:none;white-space:nowrap;
+}
+.contact-links a:hover{border-color:var(--border2);color:var(--accent);text-decoration:none}
+.contact-icon{width:16px;height:16px;flex-shrink:0;opacity:.7}
 
-    /* Profile image */
-    .profile-img{
-      width:170px; aspect-ratio:1/1; object-fit:cover;
-      border-radius:50%; border:4px solid var(--ring);
-      margin-bottom:1rem; box-shadow:0 8px 26px rgba(0,0,0,.5);
-    }
+/* ─── Research interest tags ─────────────────────── */
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0}
+.tag{
+  display:inline-block;padding:.25rem .65rem;
+  background:rgba(123,157,255,.07);color:var(--accent2);
+  border:1px solid rgba(123,157,255,.2);border-radius:999px;
+  font-size:.78rem;font-weight:500;
+}
+.tag.gold{background:rgba(240,201,122,.07);color:var(--gold);border-color:rgba(240,201,122,.2)}
+.tag.teal{background:rgba(94,207,187,.07);color:var(--teal);border-color:rgba(94,207,187,.2)}
 
-    /* Accessibility: skip link */
-    .skip-link{
-      position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;
-    }
-    .skip-link:focus{
-      position:static; width:auto; height:auto; padding:.5rem .75rem;
-      background:var(--brand); color:#0b0c10; border-radius:.5rem;
-    }
+/* ─── Publications ───────────────────────────────── */
+.pub-item{
+  padding:1.1rem 1.4rem;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  margin-bottom:.85rem;
+  background:var(--card);
+  transition:border-color .2s,transform .15s;
+}
+.pub-item:hover{border-color:var(--border2);transform:translateX(3px)}
+.pub-item.first-author{border-left:3px solid var(--accent)}
+.pub-year{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:.25rem}
+.pub-title{font-size:.97rem;font-weight:600;color:#fff;line-height:1.4;margin-bottom:.3rem}
+.pub-authors{font-size:.83rem;color:var(--fg2);margin-bottom:.35rem}
+.pub-authors strong{color:var(--fg);font-weight:600}
+.pub-journal{font-size:.83rem;color:var(--fg3)}
+.pub-links{display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap}
+.pub-link{
+  display:inline-flex;align-items:center;gap:.3rem;
+  padding:.2rem .55rem;border-radius:var(--radius-sm);
+  font-size:.75rem;font-weight:600;
+  background:rgba(123,157,255,.08);color:var(--accent);
+  border:1px solid rgba(123,157,255,.18);
+  text-decoration:none;transition:background .15s;
+}
+.pub-link:hover{background:rgba(123,157,255,.18);text-decoration:none}
+.badge-fa{
+  font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.15rem .45rem;border-radius:999px;
+  background:rgba(123,157,255,.15);color:var(--accent2);
+  border:1px solid rgba(123,157,255,.25);vertical-align:middle;margin-left:.4rem;
+}
 
-    footer{ color:var(--muted); }
-  </style>
+/* ─── CV experience ──────────────────────────────── */
+.exp-item{padding:1.25rem 1.5rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;background:var(--card)}
+.exp-role{font-size:1rem;font-weight:700;color:#fff}
+.exp-where{font-size:.88rem;color:var(--fg2);margin:.15rem 0 .1rem}
+.exp-date{font-size:.8rem;color:var(--fg3);font-family:var(--mono);letter-spacing:.05em}
+.exp-bullets{margin:.6rem 0 0 1rem;color:var(--fg2);font-size:.9rem}
+.exp-bullets li{margin-bottom:.25rem}
 
-  <!-- Schema.org Person -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Vasundhara Shaw",
-    "alternateName":"Vasu Shaw",
-    "jobTitle":"Postdoctoral Researcher",
-    "affiliation":{"@type":"CollegeOrUniversity","name":"University of Manchester"},
-    "url":"https://vasundharashaw.github.io/",
-    "image":"https://vasundharashaw.github.io/Vasu_image.jpeg",
-    "sameAs":[
-      "https://github.com/VasundharaShaw",
-      "https://orcid.org/0000-0002-5824-7191"
-    ]
-  }
-  </script>
+/* ─── Talks timeline ─────────────────────────────── */
+.timeline{position:relative;padding-left:1.75rem}
+.timeline::before{content:"";position:absolute;left:.4rem;top:.5rem;bottom:.5rem;width:1px;background:var(--border2)}
+.timeline-year{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:1.75rem 0 .75rem;position:relative}
+.timeline-year::before{content:"";position:absolute;left:-1.45rem;top:50%;transform:translateY(-50%);width:.55rem;height:.55rem;border-radius:50%;background:var(--teal)}
+.talk-item{position:relative;margin-bottom:.75rem;padding:1rem 1.2rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);transition:border-color .2s}
+.talk-item:hover{border-color:var(--border2)}
+.talk-item::before{content:"";position:absolute;left:-1.35rem;top:1.15rem;width:.45rem;height:.45rem;border-radius:50%;background:var(--accent);border:2px solid var(--bg2)}
+.talk-venue{font-size:.93rem;font-weight:700;color:#fff;margin-bottom:.15rem}
+.talk-title-em{font-size:.87rem;color:var(--fg2);font-style:italic;margin-bottom:.2rem}
+.badge-invited{font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.15rem .45rem;border-radius:999px;background:rgba(94,207,187,.1);color:var(--teal);border:1px solid rgba(94,207,187,.25);margin-left:.4rem;vertical-align:middle}
+
+/* ─── Skills grid ────────────────────────────────── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.skill-block{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem}
+.skill-block h4{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:.6rem}
+.skill-block ul{list-style:none;padding:0;font-size:.88rem;color:var(--fg2)}
+.skill-block ul li{padding:.15rem 0;border-bottom:1px solid rgba(100,120,200,.07)}
+.skill-block ul li:last-child{border-bottom:none}
+
+/* ─── Outreach / service ─────────────────────────── */
+.list-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.5rem;margin-bottom:1rem}
+.list-card ul{list-style:none;padding:0;font-size:.9rem;color:var(--fg2)}
+.list-card ul li{padding:.3rem 0;border-bottom:1px solid rgba(100,120,200,.07);display:flex;align-items:flex-start;gap:.6rem}
+.list-card ul li:last-child{border-bottom:none}
+.list-card ul li::before{content:"›";color:var(--accent);flex-shrink:0;margin-top:.05rem}
+
+/* ─── Inline hr / divider ────────────────────────── */
+.divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
+
+/* ─── Footer ─────────────────────────────────────── */
+footer{
+  position:relative;z-index:1;
+  text-align:center;padding:2rem 1.5rem;
+  color:var(--fg3);font-size:.82rem;
+  border-top:1px solid var(--border);
+}
+footer a{color:var(--fg3)}
+
+/* ─── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media(max-width:600px){
+  nav.topnav{padding:.75rem 1rem}
+  .nav-brand{font-size:.88rem}
+  .nav-links a{padding:.3rem .5rem;font-size:.82rem}
+  .page{padding:2.5rem 1rem 4rem}
+  .hero-layout{flex-direction:column;gap:1.5rem;align-items:center;text-align:center}
+  .hero-photo-col{align-items:center}
+  .contact-links{align-items:center}
+  h1.hero-name{font-size:2rem}
+}
+</style>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Vasundhara Shaw","alternateName":"Vasu Shaw","jobTitle":"Postdoctoral Researcher","url":"https://vasundharashaw.github.io/","sameAs":["https://github.com/VasundharaShaw","https://orcid.org/0000-0002-5824-7191"]}
+</script>
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to main content</a>
+<!-- Starfield -->
+<canvas id="stars"></canvas>
 
-<div class="container container-narrow py-5">
-  <!-- Header -->
-  <header class="mb-4">
-    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-      <a class="brand h4 mb-0" href="index.html">Vasundhara Shaw</a>
-      <nav class="nav nav-pills">
-        <a class="nav-link active" href="index.html" aria-current="page">Home</a>
-        <a class="nav-link" href="cv.html">CV</a>
-        <a class="nav-link" href="talks.html">Talks</a>
-      </nav>
-    </div>
-  </header>
+<div class="site">
 
-  <!-- Content -->
-  <main id="main" class="card p-4 p-md-5">
-    <div class="row g-4 align-items-start">
-      <!-- Profile -->
-      <div class="col-md-4 text-center text-md-start">
-        <img
-          src="Vasu_image.jpeg"
-          alt="Portrait of Dr Vasundhara (Vasu) Shaw"
-          class="profile-img"
-          loading="lazy"
-          decoding="async">
-        <p class="mt-3 mb-1 fw-semibold">Postdoctoral Researcher</p>
-        <p class="mb-2 small">
-          Jodrell Bank Centre for Astrophysics<br>
-          University of Manchester<br>
-          Alan Turing Building, Oxford Rd<br>
-          Manchester, M13 9PY
-        </p>
-        <ul class="list-unstyled small mb-0">
-          <li>📧 <a href="mailto:vasundhara.shaw@manchester.ac.uk">Email</a></li>
-          <li>🔗 <a href="https://github.com/VasundharaShaw" target="_blank" rel="noopener">GitHub</a></li>
-          <li>🧭 <a href="https://orcid.org/0000-0002-5824-7191" target="_blank" rel="me noopener">ORCID</a></li>
-          <li>💼 <a href="https://www.linkedin.com/in/vasundhara-shaw-9a6a8b118" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
-      </div>
+<!-- ── Nav ─────────────────────────────────────────── -->
+<nav class="topnav" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-brand" onclick="showPage('home');return false">Vasundhara <span>Shaw</span></a>
+  <ul class="nav-links">
+    <li><a href="#" id="nav-home"   class="active" onclick="showPage('home');return false">Home</a></li>
+    <li><a href="#" id="nav-research"              onclick="showPage('research');return false">Research</a></li>
+    <li><a href="#" id="nav-papers"                onclick="showPage('papers');return false">Papers</a></li>
+    <li><a href="#" id="nav-cv"                    onclick="showPage('cv');return false">CV</a></li>
+    <li><a href="#" id="nav-talks"                 onclick="showPage('talks');return false">Talks</a></li>
+  </ul>
+</nav>
 
-      <!-- About -->
-      <div class="col-md-8">
-        <h1 class="fw-semibold">About Me</h1>
-        <p>
-          Hiya! I’m Vasundhara Shaw (I go by <strong>Vasu</strong>), currently a postdoctoral researcher in astrophysics at the University of Manchester.
-        </p>
+<!-- ════════════════════════════════════════════════ -->
+<!-- PAGE: HOME                                       -->
+<!-- ════════════════════════════════════════════════ -->
+<section class="page visible" id="page-home">
+  <div class="hero-layout" style="margin-top:1rem">
 
-        <p>
-          My work focuses on cosmic rays, the Galactic magnetic field, and radio astronomy — especially using data from
-          <a href="https://cbass.web.ox.ac.uk/" target="_blank" rel="noopener">C‑BASS</a> and
-          <a href="https://sites.google.com/inaf.it/spass" target="_blank" rel="noopener">S‑PASS</a>.
-          I build simulations to study how ultra‑high energy cosmic rays travel through the Galaxy, using
-          <a href="https://crpropa.github.io/CRPropa3/pages/Installation.html" target="_blank" rel="noopener">CRPropa3</a>.
-        </p>
-        <p>
-          I enjoy working with code, data, and big sky maps; collaborating via projects like <a href="https://askap.org/possum/" target="_blank" rel="noopener">POSSUM</a>; and contributing to research papers and open‑source tools.
-          I completed my PhD at DESY (Germany), exploring cosmic‑ray transport and the structure of the Galactic halo.
-        </p>
-
-        <p>
-          Outside research, I care about mentoring, equity in science, and occasionally help with outreach and student support initiatives.
-          If you’re curious about my work or want to connect, feel free to browse around or get in touch.
-        </p>
-
-        <hr class="my-4" />
-        <div>
-          <div class="small mb-2">Featured</div>
-          <ul class="mb-0">
-            <li><a href="talks.html">Talks & slides</a></li>
-            <li><a href="cv.html">CV (web)</a></li>
-          </ul>
-        </div>
+    <!-- Photo + links -->
+    <div class="hero-photo-col">
+      <img src="Vasu_image.jpeg" alt="Portrait of Dr Vasundhara Shaw" class="profile-img"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'profile-placeholder',innerHTML:'👩‍🚀'}))">
+      <div class="contact-links">
+        <a href="mailto:vasundhara.shaw@fiz-karlsruhe.de" title="Email">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Email
+        </a>
+        <a href="https://github.com/VasundharaShaw" target="_blank" rel="noopener" title="GitHub">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.58 9.58 0 0112 6.8c.85.004 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+          GitHub
+        </a>
+        <a href="https://orcid.org/0000-0002-5824-7191" target="_blank" rel="noopener" title="ORCID">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 14.5h-2v-7h2v7zm-1-8.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm8 8.25h-2v-3.5c0-1-.38-1.5-1.12-1.5-.74 0-1.13.5-1.13 1.5v3.5h-2v-7h2v1c.4-.68 1.1-1.1 2-1.1 1.5 0 2.25.95 2.25 2.85v4.25z"/></svg>
+          ORCID
+        </a>
+        <a href="https://www.linkedin.com/in/vasundhara-shaw-9a6a8b118/" target="_blank" rel="noopener" title="LinkedIn">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 17H6.5v-7H9v7zm-1.25-8.1a1.45 1.45 0 110-2.9 1.45 1.45 0 010 2.9zM18 17h-2.5v-3.6c0-1-.4-1.4-1-1.4s-1.1.5-1.1 1.4V17H11v-7h2.4v1c.4-.65 1.1-1.1 2.1-1.1 1.7 0 2.5 1.1 2.5 3.1V17z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Shaw%2C+Vasundhara%22" target="_blank" rel="noopener" title="NASA ADS">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+          NASA ADS
+        </a>
       </div>
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer class="mt-5 text-center small">
-    <hr />
-    <p class="mb-1">© <span id="y">2025</span> Vasundhara Shaw</p>
-    <p class="mb-0">Last updated: <time id="lu" aria-label="Last updated date"></time></p>
-  </footer>
-</div>
+    <!-- Bio -->
+    <div class="hero-text-col">
+      <div class="section-label">About me</div>
+      <h1 class="hero-name">Dr Vasundhara <em>Shaw</em></h1>
+      <p class="hero-role">Postdoctoral Researcher · Astrophysics</p>
+      <p class="hero-inst">FIZ Karlsruhe – Leibniz Institute for Information Infrastructure, Berlin</p>
 
+      <p style="color:var(--fg);margin-bottom:1rem">
+        Hiya — I go by <strong style="color:#fff">Vasu</strong>. My research lives at the intersection of high-energy astrophysics and radio astronomy: I study the Galactic magnetic field (GMF), ultra-high energy cosmic rays (UHECRs), and polarised synchrotron emission using data from the <a href="https://cbass.web.ox.ac.uk/" target="_blank" rel="noopener">C‑BASS</a> and <a href="https://sites.google.com/inaf.it/spass" target="_blank" rel="noopener">S‑PASS</a> surveys.
+      </p>
+      <p style="color:var(--fg);margin-bottom:1rem">
+        I build numerical simulations with <a href="https://crpropa.github.io/CRPropa3/" target="_blank" rel="noopener">CRPropa3</a> to track how cosmic rays propagate through the magnetised Galactic halo — and I compare those predictions against real sky data. I also contribute to open science infrastructure through <a href="https://jupyter4nfdi.de" target="_blank" rel="noopener">Jupyter4NFDI</a>.
+      </p>
+      <p style="color:var(--fg);margin-bottom:1.5rem">
+        I completed my PhD at DESY Zeuthen, Germany, before moving to the Jodrell Bank Centre for Astrophysics in Manchester and then to FIZ Karlsruhe in Berlin. Beyond research, I'm on the steering committee of <a href="https://a4e.org" target="_blank" rel="noopener">Astronomers for Planet Earth</a> and care about equity in science.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">Galactic magnetic fields</span>
+        <span class="tag">UHECRs</span>
+        <span class="tag">Radio polarimetry</span>
+        <span class="tag teal">C-BASS · S-PASS</span>
+        <span class="tag teal">CRPropa3</span>
+        <span class="tag gold">Open science</span>
+        <span class="tag gold">Jupyter4NFDI</span>
+      </div>
+
+      <div style="margin-top:1.75rem;display:flex;gap:.75rem;flex-wrap:wrap">
+        <button onclick="showPage('papers')" style="background:var(--accent);color:#080b12;border:none;padding:.5rem 1.1rem;border-radius:var(--radius-sm);font-weight:700;font-size:.88rem">View Publications →</button>
+        <button onclick="showPage('cv')" style="background:transparent;color:var(--accent);border:1px solid rgba(123,157,255,.35);padding:.5rem 1.1rem;border-radius:var(--radius-sm);font-weight:700;font-size:.88rem">Full CV →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- PAGE: RESEARCH                                   -->
+<!-- ════════════════════════════════════════════════ -->
+<section class="page" id="page-research">
+  <div class="section-label">What I work on</div>
+  <h2 class="page-title">Research <span>Interests</span></h2>
+  <p class="page-sub">My work connects observations, simulations, and theory across three main themes.</p>
+
+  <!-- Theme cards -->
+  <div class="card" style="border-left:3px solid var(--accent)">
+    <h3 class="card-title">Galactic Magnetic Field Modelling</h3>
+    <p style="color:var(--fg2);font-size:.93rem;margin-bottom:.75rem">I compare analytic GMF models against full-sky 5 GHz synchrotron data from C-BASS and S-PASS, using T-T plots and template-fitting frameworks I have developed. This constrains the three-dimensional structure of both the disk and halo magnetic field.</p>
+    <div class="tag-row">
+      <span class="tag">C-BASS (5 GHz)</span><span class="tag">S-PASS (2.3 GHz)</span><span class="tag">Rotation measure maps</span><span class="tag">Template fitting</span>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--teal)">
+    <h3 class="card-title">Ultra-High Energy Cosmic Ray Propagation</h3>
+    <p style="color:var(--fg2);font-size:.93rem;margin-bottom:.75rem">I simulate UHECR transport through the Galactic halo using CRPropa3, studying how isotropic turbulent magnetic fields of varying strengths deflect particles and shape the observed dipole and quadrupole anisotropy pattern on the sky.</p>
+    <div class="tag-row">
+      <span class="tag teal">CRPropa3</span><span class="tag teal">Pierre Auger Observatory</span><span class="tag teal">Multipole analysis</span><span class="tag teal">Fermi/eROSITA bubbles</span>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--gold)">
+    <h3 class="card-title">Radio Polarimetry & Survey Science</h3>
+    <p style="color:var(--fg2);font-size:.93rem;margin-bottom:.75rem">I contribute to C-BASS data analysis (polarisation morphology, QU pipeline) and to POSSUM — the Polarisation Sky Survey of the Universe's Magnetism conducted with ASKAP — probing the magnetised interstellar medium across the southern sky.</p>
+    <div class="tag-row">
+      <span class="tag gold">POSSUM / ASKAP</span><span class="tag gold">Stokes Q, U</span><span class="tag gold">Faraday rotation</span><span class="tag gold">Synchrotron emission</span>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:3px solid rgba(123,157,255,.4)">
+    <h3 class="card-title">Open Science Infrastructure</h3>
+    <p style="color:var(--fg2);font-size:.93rem;margin-bottom:.75rem">Through Jupyter4NFDI I contribute to reproducible, cloud-based research workflows for the German academic community, making computational astrophysics more accessible and FAIR.</p>
+    <div class="tag-row">
+      <span class="tag">Jupyter4NFDI</span><span class="tag">NFDI</span><span class="tag">FAIR data</span><span class="tag">Reproducibility</span>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <hr class="divider"/>
+  <div class="section-label">Tools of the trade</div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <h4>Languages</h4>
+      <ul><li>Python (primary)</li><li>C++</li><li>Fortran</li><li>MATLAB</li></ul>
+    </div>
+    <div class="skill-block">
+      <h4>Data & statistics</h4>
+      <ul><li>NumPy, SciPy, Pandas</li><li>Bayesian inference</li><li>Time-series analysis</li></ul>
+    </div>
+    <div class="skill-block">
+      <h4>Scientific libraries</h4>
+      <ul><li>CRPropa3</li><li>Healpy / HEALPix</li><li>Astropy</li><li>NiFTy</li></ul>
+    </div>
+    <div class="skill-block">
+      <h4>Visualisation</h4>
+      <ul><li>Matplotlib</li><li>Plotly</li><li>Mollweide sky maps</li></ul>
+    </div>
+    <div class="skill-block">
+      <h4>HPC & pipelines</h4>
+      <ul><li>MPI, SLURM, HTCondor</li><li>Lustre cluster workflows</li><li>FITS data formats</li></ul>
+    </div>
+    <div class="skill-block">
+      <h4>Reproducibility</h4>
+      <ul><li>Git / GitHub</li><li>Jupyter notebooks</li><li>scikit-learn, PyTorch</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- PAGE: PAPERS                                     -->
+<!-- ════════════════════════════════════════════════ -->
+<section class="page" id="page-papers">
+  <div class="section-label">Peer-reviewed publications</div>
+  <h2 class="page-title">Publications</h2>
+  <p class="page-sub">
+    First-author papers highlighted with a blue left border. Full list on
+    <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Shaw%2C+Vasundhara%22" target="_blank" rel="noopener">NASA ADS</a> ·
+    <a href="https://orcid.org/0000-0002-5824-7191" target="_blank" rel="noopener">ORCID</a>
+  </p>
+
+  <!-- 1 — 2026 MNRAS in press -->
+  <div class="pub-item first-author">
+    <div class="pub-year">2026 · MNRAS (in press)</div>
+    <div class="pub-title">
+      Synchrotron spectral index of polarisation in C-BASS and S-PASS data
+      <span class="badge-fa">1st author</span>
+    </div>
+    <div class="pub-authors"><strong>Shaw, V.</strong> et al.</div>
+    <div class="pub-journal">Monthly Notices of the Royal Astronomical Society · 2026MNRAS.tmp..938S</div>
+    <div class="pub-links">
+      <a class="pub-link" href="https://ui.adsabs.harvard.edu/abs/2026MNRAS.tmp..938S/abstract" target="_blank" rel="noopener">ADS</a>
+    </div>
+  </div>
+
+  <!-- 2 — 2025 MNRAS halo multipoles -->
+  <div class="pub-item first-author">
+    <div class="pub-year">2025 · MNRAS 543, 3242</div>
+    <div class="pub-title">
+      Influence of the Galactic Halo on the UHECR Multipoles
+      <span class="badge-fa">1st author</span>
+    </div>
+    <div class="pub-authors"><strong>Shaw, V.</strong>, van Vliet, A., Taylor, A. M.</div>
+    <div class="pub-journal">Monthly Notices of the Royal Astronomical Society · doi:10.1093/mnras/staf1486</div>
+    <div class="pub-links">
+      <a class="pub-link" href="https://ui.adsabs.harvard.edu/abs/2025MNRAS.543.3242S/abstract" target="_blank" rel="noopener">ADS</a>
+      <a class="pub-link" href="https://arxiv.org/abs/2501.16881" target="_blank" rel="noopener">arXiv:2501.16881</a>
+      <a class="pub-link" href="https://doi.org/10.1093/mnras/staf1486" target="_blank" rel="noopener">DOI</a>
+    </div>
+  </div>
+
+  <!-- 3 — 2022 MNRAS halo bubble UHECR -->
+  <div class="pub-item first-author">
+    <div class="pub-year">2022 · MNRAS 517, 2534</div>
+    <div class="pub-title">
+      Galactic Halo Bubble Magnetic Fields and UHECR Deflections
+      <span class="badge-fa">1st author</span>
+    </div>
+    <div class="pub-authors"><strong>Shaw, V.</strong>, van Vliet, A., Taylor, A. M.</div>
+    <div class="pub-journal">Monthly Notices of the Royal Astronomical Society · doi:10.1093/mnras/stac2778</div>
+    <div class="pub-links">
+      <a class="pub-link" href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.517.2534S/abstract" target="_blank" rel="noopener">ADS</a>
+      <a class="pub-link" href="https://doi.org/10.1093/mnras/stac2778" target="_blank" rel="noopener">DOI</a>
+    </div>
+  </div>
+
+  <!-- 4 — ICRC 2024 proceedings -->
+  <div class="pub-item first-author">
+    <div class="pub-year">2024 · ICRC Proceedings</div>
+    <div class="pub-title">
+      Magnetic Fields in the Galactic Halo Bubbles and Deflections of UHECRs
+      <span class="badge-fa">1st author</span>
+    </div>
+    <div class="pub-authors"><strong>Shaw, V.</strong> et al.</div>
+    <div class="pub-journal">Proceedings of Science · ICRC 2024</div>
+    <div class="pub-links">
+      <a class="pub-link" href="https://ui.adsabs.harvard.edu/abs/2024icrc.confE.480S/abstract" target="_blank" rel="noopener">ADS</a>
+    </div>
+  </div>
+
+  <!-- 5 — POSSUM PASA 2025 -->
+  <div class="pub-item">
+    <div class="pub-year">2025 · PASA (accepted)</div>
+    <div class="pub-title">The Polarisation Sky Survey of the Universe's Magnetism (POSSUM): Science Goals and Survey Description</div>
+    <div class="pub-authors">Gaensler, B. M. et al. (incl. <strong>Shaw, V.</strong>)</div>
+    <div class="pub-journal">Publications of the Astronomical Society of Australia · arXiv:2505.08272</div>
+    <div class="pub-links">
+      <a class="pub-link" href="https://ui.adsabs.harvard.edu/abs/2025arXiv251210902F/abstract" target="_blank" rel="noopener">ADS</a>
+      <a class="pub-link" href="https://arxiv.org/abs/2505.08272" target="_blank" rel="noopener">arXiv</a>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.4rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);font-size:.88rem;color:var(--fg2)">
+    Additional papers in preparation: <em>Template-fitting constraints on GMF models using C-BASS / S-PASS</em> (first-author, 2025–2026).
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- PAGE: CV                                         -->
+<!-- ════════════════════════════════════════════════ -->
+<section class="page" id="page-cv">
+  <div class="section-label">Curriculum Vitae</div>
+  <h2 class="page-title">Dr Vasundhara <span>Shaw</span></h2>
+  <p class="page-sub">Postdoctoral astrophysicist · Berlin, Germany ·
+    <a href="mailto:vasundhara.shaw@fiz-karlsruhe.de">vasundhara.shaw@fiz-karlsruhe.de</a> ·
+    <a href="https://orcid.org/0000-0002-5824-7191" target="_blank" rel="noopener">ORCID 0000-0002-5824-7191</a>
+  </p>
+
+  <!-- Positions -->
+  <div class="section-label" style="margin-top:0">Positions held</div>
+
+  <div class="exp-item">
+    <div class="exp-role">Postdoctoral Research Associate</div>
+    <div class="exp-where"><a href="https://www.fiz-karlsruhe.de" target="_blank" rel="noopener">FIZ Karlsruhe – Leibniz Institute</a>, Berlin · Jupyter4NFDI / radio astronomy</div>
+    <div class="exp-date">2024 – present</div>
+    <ul class="exp-bullets">
+      <li>Template-fitting GMF models against C-BASS and S-PASS full-sky polarisation data</li>
+      <li>Developed reusable QU/rotation-measure pipeline for synchrotron foreground analysis</li>
+      <li>Open science contributions via Jupyter4NFDI, CRPropa3 Binder accessibility</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-role">Postdoctoral Research Associate</div>
+    <div class="exp-where"><a href="https://www.jodrellbank.manchester.ac.uk/" target="_blank" rel="noopener">Jodrell Bank Centre for Astrophysics</a>, University of Manchester, UK</div>
+    <div class="exp-date">Dec 2023 – 2024</div>
+    <ul class="exp-bullets">
+      <li>Extended CRPropa3 UHECR halo propagation simulations</li>
+      <li>Contributed to C-BASS polarisation morphology analysis</li>
+      <li>Coordinated POSSUM and C-BASS collaboration activities</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-role">Doctoral Researcher (PhD)</div>
+    <div class="exp-where"><a href="https://astroparticle-physics.desy.de/" target="_blank" rel="noopener">DESY Zeuthen</a>, Germany · Supervisors: A. Taylor, A. van Vliet</div>
+    <div class="exp-date">Jul 2018 – Dec 2023</div>
+    <ul class="exp-bullets">
+      <li>Thesis: <em>Cosmic ray transport and signatures in their local environment</em></li>
+      <li>Modelled Galactic halo magnetic field; generated Fermi / eROSITA bubble synchrotron maps</li>
+      <li>Fitted Planck 30 GHz data to constrain halo fields; established UHECR anisotropy framework</li>
+      <li>Scientific Coordinator, CQTA (2022–2023) · PhD Representative (2019–2020)</li>
+    </ul>
+  </div>
+
+  <!-- Education -->
+  <hr class="divider"/>
+  <div class="section-label">Education</div>
+  <div class="card">
+    <ul style="list-style:none;padding:0;font-size:.92rem;color:var(--fg2)">
+      <li style="padding:.45rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem">
+        <span style="color:var(--fg3);white-space:nowrap;font-family:var(--mono);font-size:.8rem">2018 – 2023</span>
+        <span><strong style="color:#fff">PhD, Physics (Astrophysics)</strong> · University of Potsdam / DESY, Germany</span>
+      </li>
+      <li style="padding:.45rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem">
+        <span style="color:var(--fg3);white-space:nowrap;font-family:var(--mono);font-size:.8rem">2016 – 2017</span>
+        <span><strong style="color:#fff">M2 Plasma Physics & Fusion</strong> · Sorbonne Université, Paris (internship at Observatoire de Paris)</span>
+      </li>
+      <li style="padding:.45rem 0;display:flex;gap:1rem">
+        <span style="color:var(--fg3);white-space:nowrap;font-family:var(--mono);font-size:.8rem">2014 – 2016</span>
+        <span><strong style="color:#fff">MSc Physics</strong> · Pondicherry University, India</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Service -->
+  <hr class="divider"/>
+  <div class="section-label">Teaching & service</div>
+  <div class="list-card">
+    <ul>
+      <li>SOC member, Galactic Science session, NAM 2025</li>
+      <li>Colloquium committee, JBCA (since 2024)</li>
+      <li>Organiser, Galactic lunch seminars, JBCA</li>
+      <li>Early Career Researcher representative, University of Manchester</li>
+      <li>EquiTea member, Jodrell Bank (diversity & inclusion forum)</li>
+      <li>Steering committee, <a href="https://a4e.org" target="_blank" rel="noopener">Astronomers for Planet Earth (A4E)</a></li>
+      <li>Teaching Assistant, Electrodynamics — University of Potsdam</li>
+    </ul>
+  </div>
+
+  <!-- Outreach -->
+  <hr class="divider"/>
+  <div class="section-label">Outreach & media</div>
+  <div class="list-card">
+    <ul>
+      <li>JBCA Ted-style talk — <em>Winner, most entertaining</em> (2025)</li>
+      <li>Stellar Lecture Series, University of Manchester — invited public talk (2025)</li>
+      <li>Radio interview, AllFM with Gurbir Singh (<a href="https://astrotalkuk.org/manchesterscience/#:~:text=8." target="_blank" rel="noopener">listen</a>) (2024)</li>
+    </ul>
+  </div>
+
+  <!-- Languages -->
+  <hr class="divider"/>
+  <div class="section-label">Languages</div>
+  <div class="tag-row">
+    <span class="tag">English — native</span>
+    <span class="tag">German — intermediate</span>
+    <span class="tag">Hindi</span>
+    <span class="tag">Bengali</span>
+    <span class="tag">French — basic</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- PAGE: TALKS                                      -->
+<!-- ════════════════════════════════════════════════ -->
+<section class="page" id="page-talks">
+  <div class="section-label">Conferences & seminars</div>
+  <h2 class="page-title">Talks & <span>Appearances</span></h2>
+  <p class="page-sub">Selected presentations. Slides on <a href="https://drive.google.com/drive/folders/11w3gzazoDZDJWj-UAb6qtcE55rqgjBYB" target="_blank" rel="noopener">Google Drive</a> and <a href="https://zenodo.org" target="_blank" rel="noopener">Zenodo</a>.</p>
+
+  <div class="timeline">
+
+    <div class="timeline-year">2025</div>
+
+    <div class="talk-item">
+      <div class="talk-venue">Chalmers University Colloquium <span class="badge-invited">Invited</span></div>
+      <div class="talk-title-em">Comparison of GMF models with the 5-GHz radio synchrotron sky</div>
+      <div style="margin-top:.35rem">
+        <a class="pub-link" href="https://zenodo.org/records/17454633" target="_blank" rel="noopener">Slides (Zenodo)</a>
+      </div>
+    </div>
+
+    <div class="talk-item">
+      <div class="talk-venue">DESY Astroparticle Physics Seminar <span class="badge-invited">Invited</span></div>
+      <div class="talk-title-em">Comparison of GMF models with the 5-GHz radio synchrotron sky</div>
+    </div>
+
+    <div class="talk-item">
+      <div class="talk-venue">MMF Workshop, Chicago <span class="badge-invited">Invited</span></div>
+      <div class="talk-title-em">Comparison of GMF models with the 5-GHz radio synchrotron sky</div>
+      <div style="margin-top:.35rem">
+        <a class="pub-link" href="https://zenodo.org/records/17454573" target="_blank" rel="noopener">Slides (Zenodo)</a>
+      </div>
+    </div>
+
+    <div class="talk-item">
+      <div class="talk-venue">Stellar Lecture Series, University of Manchester <span class="badge-invited">Invited</span></div>
+      <div class="talk-title-em">UHECR propagation and the Galactic halo</div>
+    </div>
+
+    <div class="timeline-year">2024</div>
+
+    <div class="talk-item">
+      <div class="talk-venue">COMRAD, Pisa</div>
+      <div class="talk-title-em">C-BASS polarisation survey results</div>
+    </div>
+
+    <div class="talk-item">
+      <div class="talk-venue">Galactic Lunch Seminar, Jodrell Bank</div>
+      <div class="talk-title-em">Magnetic fields and cosmic rays in Galactic halo bubbles</div>
+    </div>
+
+    <div class="timeline-year">2023</div>
+
+    <div class="talk-item">
+      <div class="talk-venue">IMAGINE Workshop, Stockholm</div>
+      <div class="talk-title-em">Magnetic fields in Galactic halo bubbles and UHECR propagation</div>
+    </div>
+
+    <div class="timeline-year">2022</div>
+
+    <div class="talk-item">
+      <div class="talk-venue">Galactic Science & CMB Foregrounds, Tenerife</div>
+      <div class="talk-title-em">Galactic halo bubble magnetic fields and UHECRs</div>
+    </div>
+
+    <div class="talk-item">
+      <div class="talk-venue">TeVPA Conference, Kingston</div>
+      <div class="talk-title-em">Galactic halo bubble magnetic fields and UHECRs</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© <span id="yr"></span> Vasundhara Shaw · Berlin, Germany</p>
+  <p style="margin-top:.3rem"><a href="https://orcid.org/0000-0002-5824-7191" target="_blank" rel="noopener">ORCID 0000-0002-5824-7191</a></p>
+</footer>
+
+</div><!-- .site -->
+
+<!-- ── Scripts ──────────────────────────────────── -->
 <script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-  const d = new Date(document.lastModified);
-  document.getElementById('lu').textContent =
-    d.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'2-digit'});
+/* Year */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Page switcher */
+const pages = ['home','research','papers','cv','talks'];
+function showPage(id){
+  pages.forEach(p=>{
+    document.getElementById('page-'+p).classList.toggle('visible', p===id);
+    const link = document.getElementById('nav-'+p);
+    if(link) link.classList.toggle('active', p===id);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  history.replaceState(null,'','#'+id);
+}
+/* Handle direct hash on load */
+const hash = location.hash.replace('#','');
+if(pages.includes(hash)) showPage(hash);
+
+/* ── Starfield ──────────────────────────────────── */
+(function(){
+  const canvas = document.getElementById('stars');
+  const ctx    = canvas.getContext('2d');
+  let W, H, stars = [];
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  function makeStars(n){
+    stars = [];
+    for(let i=0;i<n;i++){
+      const r = Math.random();
+      stars.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        r: r<.6 ? .4 : r<.9 ? .7 : 1.1,
+        a: Math.random(),
+        da: (Math.random()*.003+.0005) * (Math.random()<.5?1:-1),
+        col: Math.random()<.1 ? '#a8c0ff' : Math.random()<.05 ? '#f0c97a' : '#ffffff'
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.a += s.da;
+      if(s.a>1) s.da=-Math.abs(s.da);
+      if(s.a<.1) s.da=Math.abs(s.da);
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle = s.col;
+      ctx.globalAlpha = s.a*.85;
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',()=>{resize();makeStars(320)});
+  resize();
+  makeStars(320);
+  draw();
+})();
 </script>
 </body>
 </html>
