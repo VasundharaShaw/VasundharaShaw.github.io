@@ -15,7 +15,6 @@
     --border:    #1f2740;
     --border2:   #2d3a5a;
 
-    /* Vivid accent palette */
     --cyan:      #38d4f5;
     --violet:    #a78bfa;
     --rose:      #f472b6;
@@ -23,7 +22,6 @@
     --teal:      #2dd4bf;
     --indigo:    #818cf8;
 
-    /* Main accent = cyan */
     --accent:    #38d4f5;
     --accent2:   #a78bfa;
     --accent3:   #f472b6;
@@ -48,7 +46,6 @@
     min-height: 100vh;
   }
 
-  /* ── NEBULA BACKGROUND ── */
   body::before {
     content: '';
     position: fixed;
@@ -69,7 +66,6 @@
     z-index: 0;
   }
 
-  /* ── LAYOUT ── */
   .wrapper {
     position: relative;
     z-index: 1;
@@ -79,7 +75,6 @@
     margin: 0 auto;
   }
 
-  /* ── SIDEBAR ── */
   .sidebar {
     width: 268px;
     min-width: 268px;
@@ -137,7 +132,6 @@
     opacity: 0.85;
   }
 
-  /* Social links */
   .social-links {
     display: flex;
     flex-direction: column;
@@ -165,7 +159,6 @@
   }
   .social-links a:hover svg { opacity: 1; }
 
-  /* Nav */
   nav ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
 
   nav ul li a {
@@ -184,7 +177,6 @@
   nav ul li a:hover { color: var(--cyan); background: rgba(56,212,245,0.06); }
   nav ul li a.active { color: var(--cyan); background: rgba(56,212,245,0.08); border-left-color: var(--cyan); }
 
-  /* Tags */
   .sidebar-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 
   .tag {
@@ -199,7 +191,6 @@
 
   .tag:hover { border-color: var(--cyan); color: var(--cyan); }
 
-  /* ── MAIN ── */
   main {
     flex: 1;
     padding: 52px 52px 80px 52px;
@@ -209,7 +200,6 @@
 
   section { margin-bottom: 68px; scroll-margin-top: 32px; }
 
-  /* Section label */
   .section-label {
     font-size: 0.65rem;
     letter-spacing: 0.2em;
@@ -252,13 +242,10 @@
   a { color: var(--cyan); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
-  /* ── ABOUT ── */
   .about-intro { font-size: 1rem; color: var(--text); line-height: 1.85; }
 
-  /* Highlight spans in body text */
   strong { color: var(--white); font-weight: 500; }
 
-  /* ── TIMELINE ── */
   .timeline { display: flex; flex-direction: column; gap: 28px; }
 
   .t-entry {
@@ -325,7 +312,6 @@
     color: var(--teal);
   }
 
-  /* ── PUBLICATIONS ── */
   .pub-list { display: flex; flex-direction: column; gap: 16px; }
 
   .pub {
@@ -402,7 +388,6 @@
     margin-left: 6px;
   }
 
-  /* ── RESEARCH CARDS ── */
   .research-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -450,7 +435,6 @@
     color: var(--muted);
   }
 
-  /* ── TALKS ── */
   .talk-list { display: flex; flex-direction: column; gap: 14px; }
 
   .talk {
@@ -480,7 +464,6 @@
     letter-spacing: 0.08em;
   }
 
-  /* ── TABLE ── */
   table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
 
   th {
@@ -498,7 +481,6 @@
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: rgba(56,212,245,0.03); }
 
-  /* ── SKILLS ── */
   .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   .skill-group h4 {
@@ -513,7 +495,6 @@
   .skill-group ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
   .skill-group ul li { font-size: 0.8rem; color: var(--muted); }
 
-  /* ── SERVICE ── */
   .service-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
 
   .service-list li {
@@ -526,10 +507,8 @@
 
   .service-list li::before { content: '—'; color: var(--border2); flex-shrink: 0; }
 
-  /* ── DIVIDER ── */
   .divider { height: 1px; background: linear-gradient(to right, var(--border2), transparent); margin: 36px 0; }
 
-  /* ── FOOTER ── */
   footer {
     position: relative; z-index: 1;
     border-top: 1px solid var(--border);
@@ -545,7 +524,6 @@
     backdrop-filter: blur(8px);
   }
 
-  /* ── MOBILE ── */
   @media (max-width: 800px) {
     .wrapper { flex-direction: column; }
     .sidebar { width: 100%; min-width: unset; position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 28px 20px; }
@@ -556,7 +534,6 @@
     footer { flex-direction: column; gap: 6px; text-align: center; padding: 20px; }
   }
 
-  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -919,6 +896,26 @@
         <a href="https://zenodo.org" target="_blank">Zenodo</a>.
       </p>
       <div class="talk-list">
+
+        <!-- 2026 additions -->
+        <div class="talk">
+          <div class="talk-date">2026</div>
+          <div class="talk-body">
+            <div class="talk-type">Contributed</div>
+            <div class="talk-title"><a href="https://events.hifis.net/event/3380/#19-jupyter4nfdi" target="_blank">NFDI Berlin Brandenburg Meeting</a> — <a href="https://zenodo.org/records/20507552" target="_blank">Introduction to Jupyter4NFDI</a></div>
+            <div class="talk-venue">Berlin, Germany</div>
+          </div>
+        </div>
+        <div class="talk">
+          <div class="talk-date">2026</div>
+          <div class="talk-body">
+            <div class="talk-type">Contributed</div>
+            <div class="talk-title">CRPropa Workshop Hamburg — Integrating Jupyter Notebooks into JupyterHub: application to Natural Sciences</div>
+            <div class="talk-venue">Hamburg, Germany</div>
+          </div>
+        </div>
+
+        <!-- existing talks -->
         <div class="talk">
           <div class="talk-date">2025</div>
           <div class="talk-body">
@@ -998,12 +995,12 @@
   let W, H, stars = [];
 
   const colors = [
-    [200,230,255],  // blue-white
-    [255,220,180],  // warm
-    [180,210,255],  // cool blue
-    [255,255,230],  // yellow-white
-    [56,212,245],   // cyan accent
-    [167,139,250],  // violet accent
+    [200,230,255],
+    [255,220,180],
+    [180,210,255],
+    [255,255,230],
+    [56,212,245],
+    [167,139,250],
   ];
 
   function resize(){
